@@ -1,0 +1,17 @@
+@import "tailwindcss";
+
+:root {
+  --deep-plum: #512b42;
+  --orchid: #7c4c75;
+  --lavender: #cf9cc8;
+}
+
+body {
+  @apply bg-[#0f0a0d] text-white selection:bg-[#cf9cc8] selection:text-[#512b42];
+  overflow-x: hidden;
+}
+
+/* Custom scrollbar to match theme */
+::-webkit-scrollbar { width: 8px; }
+::-webkit-scrollbar-track { background: #0f0a0d; }
+::-webkit-scrollbar-thumb { background: #512b42; border-radius: 10px; }
