@@ -2,7 +2,6 @@ import Navbar from "./components/Navbar";
 import Hero from "./components/Hero";
 import About from "./components/About";
 import Tech from "./components/TechStack";
-import work from "./components/Work";
 
 export default function App() {
   return (
@@ -11,7 +10,16 @@ export default function App() {
       <Hero />
       <About />
       <Tech />
-      <work />
+
     </div>
   );
 }
+
+// navbar
+// hero
+// about me
+// tech stack
+// projects
+// certificates
+// contact form
+// footer
