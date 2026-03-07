@@ -46,18 +46,17 @@ const About = () => {
   );
 
   return (
-    
     <section
       ref={containerRef}
       className="relative w-full bg-black py-24 md:py-40 px-[8vw] overflow-hidden"
     >
-        
-   
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
-           {/* Background Section Title (Luxury aesthetic) */}
-      <div className="absolute -bottom-10 left-0 opacity-5 pointer-events-none select-none">
-        <h1 className="text-[25vw] font-black text-lavender italic leading-none">ABOUT</h1>
-      </div>
+        {/* Background Section Title (Luxury aesthetic) */}
+        <div className="absolute -bottom-10 left-0 opacity-5 pointer-events-none select-none">
+          <h1 className="text-[25vw] font-black text-lavender italic leading-none">
+            ABOUT
+          </h1>
+        </div>
         {/* Falling Identity Image */}
         <div
           ref={(el) => (physicsItems.current[0] = el)}
