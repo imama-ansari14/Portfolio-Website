@@ -15,14 +15,6 @@ const Hero = () => {
         duration: 1,
         ease: "power4.out",
       })
-        .from(".hero-sub", { opacity: 0, y: 20, duration: 0.8 }, "-=0.5")
-        .from(".scroll-indicator", {
-          opacity: 0,
-          y: -20,
-          repeat: -1,
-          yoyo: true,
-          duration: 1.5,
-        });
     },
     { scope: container }
   );
@@ -46,9 +38,6 @@ const Hero = () => {
       <p className="hero-sub text-orchid text-xl tracking-[0.3em] uppercase mt-5">
         Imama Ansari
       </p>
-      <div className="scroll-indicator absolute bottom-10 text-lavender/50 text-sm tracking-widest uppercase">
-        Scroll to Explore
-      </div>
     </section>
   );
 };
