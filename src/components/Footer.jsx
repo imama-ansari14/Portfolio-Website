@@ -49,14 +49,13 @@ const Footer = () => {
       <div className="relative z-10 max-w-5xl mx-auto px-8 pt-4 pb-6">
         {/* Grid */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-10">
-
           {/* Logo + Email */}
           <div>
             <img
               src={logo}
               alt="Imama Ansari"
               style={{
-                height: "48px",
+                height: "50px",
                 width: "auto",
                 marginBottom: "8px",
                 objectFit: "contain",
@@ -64,7 +63,7 @@ const Footer = () => {
             />
             <p
               style={{
-                fontSize: "12.5px",
+                fontSize: "15px",
                 color: "var(--orchid)",
                 fontWeight: 300,
                 marginBottom: "16px",
@@ -72,8 +71,9 @@ const Footer = () => {
             >
               Frontend Developer · Crafting digital experiences
             </p>
-            
-             <a href="mailto:ansariimama@yahoo.com"
+
+            <a
+              href="mailto:ansariimama@yahoo.com"
               style={{
                 display: "inline-flex",
                 alignItems: "center",
@@ -99,7 +99,7 @@ const Footer = () => {
                 fontWeight: 500,
                 letterSpacing: "0.14em",
                 textTransform: "uppercase",
-                color: "var(--orchid)",
+                color: "white",
                 marginBottom: "14px",
               }}
             >
@@ -117,14 +117,14 @@ const Footer = () => {
             >
               {navLinks.map((link) => (
                 <li key={link}>
-                  
-                   <a href={`#${link.toLowerCase()}`}
+                  <a
+                    href={`#${link.toLowerCase()}`}
                     style={{
                       color: "var(--lavender)",
                       textDecoration: "none",
                       fontSize: "13.5px",
                     }}
-                >
+                  >
                     — {link}
                   </a>
                 </li>
@@ -149,8 +149,8 @@ const Footer = () => {
             <div
               style={{ display: "flex", flexDirection: "column", gap: "10px" }}
             >
-              
-               <a href="https://github.com/imama-ansari14"
+              <a
+                href="https://github.com/imama-ansari14"
                 target="_blank"
                 rel="noreferrer"
                 style={{
@@ -182,8 +182,8 @@ const Footer = () => {
                 GitHub
               </a>
 
-              
-               <a href="https://linkedin.com/in/imama-ansari-5a604b337"
+              <a
+                href="https://linkedin.com/in/imama-ansari-5a604b337"
                 target="_blank"
                 rel="noreferrer"
                 style={{
@@ -216,32 +216,6 @@ const Footer = () => {
               </a>
             </div>
           </div>
-        </div>
-
-        {/* Divider + Bottom */}
-        <hr
-          style={{
-            border: "none",
-            borderTop: "1px solid rgba(207,156,200,0.12)",
-            marginBottom: "1.2rem",
-          }}
-        />
-        <div
-          style={{
-            display: "flex",
-            justifyContent: "space-between",
-            flexWrap: "wrap",
-            gap: "10px",
-          }}
-        >
-          <p style={{ fontSize: "12px", color: "var(--deep-plum)", margin: 0 }}>
-            &copy; 2025{" "}
-            <span style={{ color: "var(--lavender)" }}>Imama Ansari</span>. All
-            rights reserved.
-          </p>
-          <p style={{ fontSize: "11.5px", color: "var(--deep-plum)", margin: 0 }}>
-            ♥ Built with React & Tailwind CSS
-          </p>
         </div>
       </div>
     </footer>
