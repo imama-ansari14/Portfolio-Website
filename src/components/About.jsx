@@ -2,7 +2,7 @@ import React, { useRef } from "react";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import myImg from "../assets/my-image.jpeg"; // Replace with your actual image path
+import myImg from "../assets/my-img.png"; 
 
 gsap.registerPlugin(ScrollTrigger);
 
