@@ -93,9 +93,8 @@ const Footer = () => {
 
           {/* Nav Links */}
           <div>
-            <p
+            <h2
               style={{
-                fontSize: "10px",
                 fontWeight: 500,
                 letterSpacing: "0.14em",
                 textTransform: "uppercase",
@@ -104,7 +103,7 @@ const Footer = () => {
               }}
             >
               Navigate
-            </p>
+            </h2>
             <ul
               style={{
                 listStyle: "none",
@@ -134,18 +133,17 @@ const Footer = () => {
 
           {/* Social Links */}
           <div>
-            <p
+            <h2
               style={{
-                fontSize: "10px",
                 fontWeight: 500,
                 letterSpacing: "0.14em",
                 textTransform: "uppercase",
-                color: "var(--orchid)",
+                color: "white",
                 marginBottom: "14px",
               }}
             >
               Connect
-            </p>
+            </h2>
             <div
               style={{ display: "flex", flexDirection: "column", gap: "10px" }}
             >
@@ -159,7 +157,7 @@ const Footer = () => {
                   gap: "10px",
                   color: "var(--lavender)",
                   textDecoration: "none",
-                  fontSize: "13.5px",
+                  fontSize: "15px",
                   padding: "6px 10px",
                   borderRadius: "8px",
                   border: "1px solid rgba(207,156,200,0.15)",
@@ -192,7 +190,7 @@ const Footer = () => {
                   gap: "10px",
                   color: "var(--lavender)",
                   textDecoration: "none",
-                  fontSize: "13.5px",
+                  fontSize: "15px",
                   padding: "6px 10px",
                   borderRadius: "8px",
                   border: "1px solid rgba(207,156,200,0.15)",
