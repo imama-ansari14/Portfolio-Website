@@ -22,10 +22,11 @@ const Hero = () => {
   return (
     <section
       ref={container}
+      id="home"
       className="h-screen flex flex-col justify-center items-center relative overflow-hidden"
     >
       <h1 className="hero-title text-[12vw] font-black leading-none uppercase flex flex-wrap justify-center overflow-hidden">
-        {"Creative Developer".split(" ").map((word, i) => (
+        {"Imama       ansari".split(" ").map((word, i) => (
           <span key={i} className="inline-block mr-4 text-white">
             {word.split("").map((char, j) => (
               <span key={j} className="inline-block char">
@@ -36,7 +37,7 @@ const Hero = () => {
         ))}
       </h1>
       <p className="hero-sub text-orchid text-xl tracking-[0.3em] uppercase mt-5">
-        Imama Ansari
+        developer
       </p>
     </section>
   );

@@ -48,6 +48,7 @@ const About = () => {
   return (
     <section
       ref={containerRef}
+      id="about"
       className="relative w-full bg-black py-24 md:py-40 px-[8vw] overflow-hidden"
     >
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">

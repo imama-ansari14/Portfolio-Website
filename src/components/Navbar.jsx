@@ -6,6 +6,13 @@ import Logo from "../assets/logo.png";
 
 const navItems = ["About", "Projects", "Stack", "Contact"];
 
+// ✅ Smooth scroll helper
+const scrollToSection = (e, id) => {
+  e.preventDefault();
+  const el = document.getElementById(id);
+  if (el) el.scrollIntoView({ behavior: "smooth" });
+};
+
 const Navbar = () => {
   const navRef = useRef();
   const sidebarRef = useRef();
@@ -48,8 +55,7 @@ const Navbar = () => {
   return (
     <>
       {/* ── NAVBAR ── */}
-      <div ref={navRef} className="fixed top-0 w-full z-[100] ">
-        {/* Main bar */}
+      <div ref={navRef} className="fixed top-0 w-full z-[100]">
         <div
           className="w-full px-8 md:px-12 h-[68px] flex items-center justify-between relative"
           style={{
@@ -57,7 +63,7 @@ const Navbar = () => {
             backdropFilter: "blur(18px)",
           }}
         >
-          {/* Left lavender accent */}
+          {/* Left accent */}
           <div
             className="absolute left-0 top-0 bottom-0 w-[3px]"
             style={{ background: "linear-gradient(180deg, #cf9cc8, #7c4c75)" }}
@@ -75,7 +81,17 @@ const Navbar = () => {
               <a
                 key={item}
                 href={`#${item.toLowerCase()}`}
-                className="text-[11px] uppercase tracking-[0.13em] font-medium text-white/55 px-[15px] py-[6px] rounded-full hover:bg-lavender/15 hover:text-lavender transition-all duration-300"
+                onClick={(e) => scrollToSection(e, item.toLowerCase())}
+                className="nav-link text-[11px] uppercase tracking-[0.13em] font-medium text-white/55 px-[15px] py-[6px] rounded-full transition-all duration-300"
+                style={{ "--hover-color": "var(--lavender)" }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.color = "var(--lavender)";
+                  e.currentTarget.style.background = "rgba(207,156,200,0.12)";
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.color = "";
+                  e.currentTarget.style.background = "";
+                }}
               >
                 {item}
               </a>
@@ -85,7 +101,8 @@ const Navbar = () => {
           {/* Hamburger */}
           <button
             onClick={openSidebar}
-            className="md:hidden text-lavender p-1 w-10"
+            className="md:hidden p-1 w-10"
+            style={{ color: "var(--lavender)" }}
           >
             <Menu size={22} />
           </button>
@@ -97,7 +114,6 @@ const Navbar = () => {
           preserveAspectRatio="none"
           className="w-full block"
           style={{ height: "40px", marginTop: "-1px" }}
-          xmlns="http://www.w3.org/2000/svg"
         >
           <path
             d="M0,0 L0,20 Q30,40 60,20 Q90,0 120,20 Q150,40 180,20 Q210,0 240,20 Q270,40 300,20 Q330,0 360,20 Q390,40 420,20 Q450,0 480,20 Q510,40 540,20 Q570,0 600,20 Q630,40 660,20 Q690,0 720,20 Q750,40 780,20 Q810,0 840,20 Q870,40 900,20 Q930,0 960,20 Q990,40 1020,20 Q1050,0 1080,20 Q1110,40 1140,20 Q1170,0 1200,20 Q1230,40 1260,20 Q1290,0 1320,20 Q1350,40 1380,20 Q1410,0 1440,20 L1440,0 Z"
@@ -142,8 +158,9 @@ const Navbar = () => {
           <img src={Logo} alt="logo" className="w-20 h-auto" />
           <button
             onClick={closeSidebar}
-            className="w-10 h-10 rounded-full flex items-center justify-center text-lavender"
+            className="w-10 h-10 rounded-full flex items-center justify-center"
             style={{
+              color: "var(--lavender)",
               background: "rgba(207,156,200,0.1)",
               border: "1px solid rgba(207,156,200,0.2)",
             }}
@@ -152,13 +169,27 @@ const Navbar = () => {
           </button>
         </div>
 
-        {/* Sidebar links */}
+        {/* ✅ Sidebar links */}
         {navItems.map((item) => (
           <a
             key={item}
             href={`#${item.toLowerCase()}`}
-            onClick={closeSidebar}
-            className="text-[13px] uppercase tracking-[0.12em] font-medium text-white/60 px-4 py-[14px] rounded-xl border border-transparent hover:bg-lavender/8 hover:border-lavender/15 hover:text-lavender transition-all duration-200"
+            onClick={(e) => {
+              scrollToSection(e, item.toLowerCase());
+              closeSidebar();
+            }}
+            className="text-[13px] uppercase tracking-[0.12em] font-medium transition-all duration-200 px-4 py-[14px] rounded-xl border border-transparent"
+            style={{ color: "rgba(255,255,255,0.6)" }}
+            onMouseEnter={(e) => {
+              e.currentTarget.style.color = "var(--lavender)";
+              e.currentTarget.style.background = "rgba(207,156,200,0.08)";
+              e.currentTarget.style.borderColor = "rgba(207,156,200,0.15)";
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.style.color = "rgba(255,255,255,0.6)";
+              e.currentTarget.style.background = "";
+              e.currentTarget.style.borderColor = "transparent";
+            }}
           >
             {item}
           </a>

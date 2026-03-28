@@ -55,7 +55,7 @@ const Footer = () => {
               src={logo}
               alt="Imama Ansari"
               style={{
-                height: "50px",
+                height: "60px",
                 width: "auto",
                 marginBottom: "8px",
                 objectFit: "contain",
@@ -64,7 +64,7 @@ const Footer = () => {
             <p
               style={{
                 fontSize: "15px",
-                color: "var(--orchid)",
+                color: "white",
                 fontWeight: 300,
                 marginBottom: "16px",
               }}
