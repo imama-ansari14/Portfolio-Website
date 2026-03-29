@@ -7,6 +7,7 @@ const Footer = () => {
 
   return (
     <footer
+    id="footer"
       className="relative overflow-hidden"
       style={{ background: "#0f0a0d", color: "var(--lavender)" }}
     >
