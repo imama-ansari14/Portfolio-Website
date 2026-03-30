@@ -1,7 +1,8 @@
 import { useState, useRef } from "react";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
-// import { PROJECTS } from '../constants';
+import { PROJECTS } from '../data/index';
+import logo from "../assets/my-img.png";
 
 const Work = () => {
   const [filter, setFilter] = useState("All");
@@ -48,7 +49,7 @@ const Work = () => {
             className="project-card group relative overflow-hidden rounded-2xl aspect-video bg-plum/10"
           >
             <img
-              src={p.img}
+              src={logo}
               className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700 group-hover:scale-110"
               alt={p.title}
             />
@@ -56,7 +57,7 @@ const Work = () => {
             <div className="absolute bottom-8 left-8">
               <h3 className="text-3xl font-bold">{p.title}</h3>
               <p className="text-lavender text-sm italic">
-                {p.tags.join(" / ")}
+                {/* {p.tags.join(" / ")} */}
               </p>
             </div>
           </div>
