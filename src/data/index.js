@@ -1,3 +1,5 @@
+import bistroBliss from "../assets/bistro-bliss.png";
+
 export const PROJECTS = [
   {
     id: "01",
@@ -66,7 +68,7 @@ export const PROJECTS = [
     category: "Web Design",
     desc: "Food-themed restaurant website with modern layout and full menu UI.",
     tags: ["HTML", "CSS", "Bootstrap"],
-    img: "/images/bistro.png",
+    img: bistroBliss,
     live: "https://",
     github: "https://github.com/imama-ansari14",
   },
