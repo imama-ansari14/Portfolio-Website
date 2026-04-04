@@ -1,5 +1,9 @@
 import bistroBliss from "../assets/bistro-bliss.png";
-
+import tevily from "../assets/tevily.png";
+// import nocturne from "../assets/nocturne.png";
+// import saylani from "../assets/saylani.png";
+// import megamart from "../assets/megamart.png";
+import calc from "../assets/calc-project.png";
 export const PROJECTS = [
   {
     id: "01",
@@ -18,7 +22,7 @@ export const PROJECTS = [
     category: "Web Design",
     desc: "Travel and tour landing page with rich UI and destination showcases.",
     tags: ["HTML", "CSS", "Bootstrap"],
-    img: "/images/tevily-project.png",
+    img: tevily,
     live: "https://imama-ansari14.github.io/TEVILY_Travel-and-Tour/",
     github: "https://github.com/imama-ansari14/TEVILY_Travel-and-Tour.git",
   },
