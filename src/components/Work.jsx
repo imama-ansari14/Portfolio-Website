@@ -15,7 +15,8 @@ const ProjectCard = ({ p, tall = false }) => {
     const x = e.clientX - rect.left;
     const y = e.clientY - rect.top;
     const sp = cardRef.current?.querySelector(".spotlight");
-    if (sp) sp.style.background = `radial-gradient(320px circle at ${x}px ${y}px, rgba(81,43,66,0.55) 0%, rgba(40,15,30,0.35) 45%, transparent 70%)`;
+    if (sp)
+      sp.style.background = `radial-gradient(320px circle at ${x}px ${y}px, rgba(81,43,66,0.55) 0%, rgba(40,15,30,0.35) 45%, transparent 70%)`;
   }, []);
 
   const handleMouseEnter = useCallback((e) => {
@@ -59,9 +60,7 @@ const ProjectCard = ({ p, tall = false }) => {
       />
 
       {/* Spotlight */}
-      <div
-        className="spotlight absolute inset-0 z-10 pointer-events-none rounded-[18px]"
-      />
+      <div className="spotlight absolute inset-0 z-10 pointer-events-none rounded-[18px]" />
 
       {/* Image */}
       <div className="relative overflow-hidden">
@@ -119,8 +118,8 @@ const ProjectCard = ({ p, tall = false }) => {
             {p.desc}
           </p>
           <div className="flex gap-2">
-            
-             <a href={p.live}
+            <a
+              href={p.live}
               target="_blank"
               rel="noreferrer"
               className="flex items-center gap-1"
@@ -138,8 +137,9 @@ const ProjectCard = ({ p, tall = false }) => {
             >
               <ExternalLink size={10} /> Live
             </a>
-            
-           <a   href={p.github}
+
+            <a
+              href={p.github}
               target="_blank"
               rel="noreferrer"
               className="flex items-center gap-1"
@@ -171,7 +171,8 @@ const ProjectCard = ({ p, tall = false }) => {
             marginBottom: "5px",
           }}
         >
-          {p.id}{p.featured ? " — Featured" : ""}
+          {p.id}
+          {p.featured ? " — Featured" : ""}
         </p>
         <p
           style={{
@@ -212,9 +213,7 @@ const Work = () => {
   const container = useRef();
 
   const filteredProjects =
-    filter === "All"
-      ? PROJECTS
-      : PROJECTS.filter((p) => p.category === filter);
+    filter === "All" ? PROJECTS : PROJECTS.filter((p) => p.category === filter);
 
   useGSAP(() => {
     gsap.fromTo(
@@ -295,7 +294,6 @@ const Work = () => {
       style={{ background: "#0f0a0d", padding: "100px 40px" }}
     >
       <div className="max-w-6xl mx-auto">
-
         {/* Header */}
         <div
           className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-14"
@@ -304,31 +302,6 @@ const Work = () => {
             paddingBottom: "36px",
           }}
         >
-          <div>
-            <p
-              style={{
-                fontSize: "10px",
-                letterSpacing: "0.2em",
-                textTransform: "uppercase",
-                color: "var(--orchid)",
-                marginBottom: "8px",
-              }}
-            >
-              // selected works
-            </p>
-            <h2
-              style={{
-                fontSize: "clamp(36px, 6vw, 56px)",
-                fontWeight: 700,
-                color: "#e8dde5",
-                lineHeight: 1,
-              }}
-            >
-              Work
-              <span style={{ color: "var(--lavender)" }}>.</span>
-            </h2>
-          </div>
-
           {/* Filter */}
           <div className="flex gap-2 flex-wrap">
             {categories.map((cat) => (
@@ -347,7 +320,8 @@ const Work = () => {
                     filter === cat
                       ? "1px solid rgba(207,156,200,0.4)"
                       : "1px solid rgba(124,76,117,0.35)",
-                  background: filter === cat ? "var(--deep-plum)" : "transparent",
+                  background:
+                    filter === cat ? "var(--deep-plum)" : "transparent",
                   color: filter === cat ? "var(--lavender)" : "var(--orchid)",
                 }}
               >
@@ -358,9 +332,7 @@ const Work = () => {
         </div>
 
         {/* Alternating layout */}
-        <div className="flex flex-col gap-4">
-          {renderAlternating()}
-        </div>
+        <div className="flex flex-col gap-4">{renderAlternating()}</div>
       </div>
     </section>
   );

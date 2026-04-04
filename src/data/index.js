@@ -1,9 +1,9 @@
 import bistroBliss from "../assets/bistro-bliss.png";
 import tevily from "../assets/tevily.png";
-// import nocturne from "../assets/nocturne.png";
+import IceAndSpice from "../assets/ice-and-spice.png";
+// import QuranSabaq from "../assets/quransabaq.png";
 // import saylani from "../assets/saylani.png";
-// import megamart from "../assets/megamart.png";
-import calc from "../assets/calc-project.png";
+import calculator from "../assets/calc-project.png";
 export const PROJECTS = [
   {
     id: "01",
@@ -13,6 +13,16 @@ export const PROJECTS = [
     desc: "Online Quran education platform with multi-tier pricing, contact form, and WhatsApp support.",
     tags: ["React", "Tailwind", "Formspree", "GSAP"],
     img: "/images/quransabaq.png",
+    live: "https://",
+    github: "https://github.com/imama-ansari14",
+  },
+  {
+    id: "02",
+    title: "Ice And Spice",
+    category: "Web Design",
+    desc: "Restaurant website with vibrant design, menu showcase and contact form.",
+    tags: ["React", "Tailwind"],
+    img: IceAndSpice,
     live: "https://",
     github: "https://github.com/imama-ansari14",
   },
@@ -62,7 +72,7 @@ export const PROJECTS = [
     category: "Functionality",
     desc: "Sleek calculator with full arithmetic logic and glowmode dark UI.",
     tags: ["HTML", "CSS", "JS"],
-    img: "/images/calc-project.png",
+    img: calculator,
     live: "https://glowmode-calculator.netlify.app/",
     github: "https://github.com/imama-ansari14/CodeAlpha_Projects.git",
   },
@@ -76,14 +86,5 @@ export const PROJECTS = [
     live: "https://",
     github: "https://github.com/imama-ansari14",
   },
-  {
-    id: "08",
-    title: "LUXE Car Dealership",
-    category: "Web Design",
-    desc: "UX-optimised luxury car dealership with conversion-focused redesign.",
-    tags: ["HTML", "CSS", "Bootstrap"],
-    img: "/images/luxe.png",
-    live: "https://",
-    github: "https://github.com/imama-ansari14",
-  },
+  
 ];
