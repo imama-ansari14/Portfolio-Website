@@ -1,8 +1,8 @@
 import bistroBliss from "../assets/bistro-bliss.png";
 import tevily from "../assets/tevily.png";
 import IceAndSpice from "../assets/ice-and-spice.png";
-// import QuranSabaq from "../assets/quransabaq.png";
-// import saylani from "../assets/saylani.png";
+import QuranSabaq from "../assets/Quran-Sabaq.png";
+import AimersAcademy from "../assets/aimers-academy.png";
 import calculator from "../assets/calc-project.png";
 export const PROJECTS = [
   {
@@ -12,12 +12,12 @@ export const PROJECTS = [
     category: "Web Design",
     desc: "Online Quran education platform with multi-tier pricing, contact form, and WhatsApp support.",
     tags: ["React", "Tailwind", "Formspree", "GSAP"],
-    img: "/images/quransabaq.png",
+    img: QuranSabaq,
     live: "https://",
     github: "https://github.com/imama-ansari14",
   },
   {
-    id: "02",
+    id: "03",
     title: "Ice And Spice",
     category: "Web Design",
     desc: "Restaurant website with vibrant design, menu showcase and contact form.",
@@ -27,7 +27,7 @@ export const PROJECTS = [
     github: "https://github.com/imama-ansari14",
   },
   {
-    id: "02",
+    id: "04",
     title: "Tevily Travel",
     category: "Web Design",
     desc: "Travel and tour landing page with rich UI and destination showcases.",
@@ -37,17 +37,17 @@ export const PROJECTS = [
     github: "https://github.com/imama-ansari14/TEVILY_Travel-and-Tour.git",
   },
   {
-    id: "03",
-    title: "NOCTURNE Restaurant",
-    category: "Web Design",
-    desc: "Luxury Parisian restaurant site with floating dish animations and GSAP ScrollTrigger effects.",
-    tags: ["React", "GSAP", "Tailwind"],
+    id: "05",
+    title: "Aimers Academy",
+    category: "Web Development",
+    desc: "Educational platform with course listings, user authentication and admin dashboard.",
+    tags: ["HTML", "CSS", "Bootstrap", "Formspree"],
     img: "/images/nocturne.png",
-    live: "https://",
+    live: "",
     github: "https://github.com/imama-ansari14",
   },
   {
-    id: "04",
+    id: "06",
     title: "Saylani IT Hub Portal",
     category: "Functionality",
     desc: "Student portal with Supabase auth, role-based navigation and admin dashboard.",
@@ -55,26 +55,6 @@ export const PROJECTS = [
     img: "/images/saylani.png",
     live: "https://",
     github: "https://github.com/imama-ansari14",
-  },
-  {
-    id: "05",
-    title: "MEGA MART E-commerce",
-    category: "Functionality",
-    desc: "Full e-commerce UI with product listings, filters, and cart flow.",
-    tags: ["HTML", "CSS", "Bootstrap", "JS"],
-    img: "/images/megamart.png",
-    live: "https://",
-    github: "https://github.com/imama-ansari14",
-  },
-  {
-    id: "06",
-    title: "Basic Calculator",
-    category: "Functionality",
-    desc: "Sleek calculator with full arithmetic logic and glowmode dark UI.",
-    tags: ["HTML", "CSS", "JS"],
-    img: calculator,
-    live: "https://glowmode-calculator.netlify.app/",
-    github: "https://github.com/imama-ansari14/CodeAlpha_Projects.git",
   },
   {
     id: "07",
@@ -86,5 +66,15 @@ export const PROJECTS = [
     live: "https://",
     github: "https://github.com/imama-ansari14",
   },
-  
+  {
+    id: "08",
+    title: "Basic Calculator",
+    category: "Functionality",
+    desc: "Sleek calculator with full arithmetic logic and glowmode dark UI.",
+    tags: ["HTML", "CSS", "JS"],
+    img: calculator,
+    live: "https://glowmode-calculator.netlify.app/",
+    github: "https://github.com/imama-ansari14/CodeAlpha_Projects.git",
+  }
+
 ];
