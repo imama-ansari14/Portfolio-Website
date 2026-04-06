@@ -3,6 +3,7 @@ import tevily from "../assets/tevily.png";
 import IceAndSpice from "../assets/ice-and-spice.png";
 import QuranSabaq from "../assets/Quran-Sabaq.png";
 import AimersAcademy from "../assets/aimers-academy.png";
+import ramdanCounter from "../assets/Ramadan-Counter.png";
 import calculator from "../assets/calc-project.png";
 export const PROJECTS = [
   {
@@ -42,17 +43,17 @@ export const PROJECTS = [
     category: "Web Development",
     desc: "Educational platform with course listings, user authentication and admin dashboard.",
     tags: ["HTML", "CSS", "Bootstrap", "Formspree"],
-    img: "/images/nocturne.png",
+    img: AimersAcademy,
     live: "",
     github: "https://github.com/imama-ansari14",
   },
   {
     id: "06",
-    title: "Saylani IT Hub Portal",
+    title: "Ramdan Counter And Calender",
     category: "Functionality",
-    desc: "Student portal with Supabase auth, role-based navigation and admin dashboard.",
-    tags: ["React", "Supabase", "Vite"],
-    img: "/images/saylani.png",
+    desc: "",
+    tags: ["React", "Tailwind", "API"],
+    img: ramdanCounter,
     live: "https://",
     github: "https://github.com/imama-ansari14",
   },
