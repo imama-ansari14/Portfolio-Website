@@ -76,6 +76,26 @@ export const PROJECTS = [
     img: calculator,
     live: "https://glowmode-calculator.netlify.app/",
     github: "https://github.com/imama-ansari14/CodeAlpha_Projects.git",
+  },
+  {
+    id: "09",
+    title: "Dynamic Survey Form",
+    category: "Functionality",
+    desc: "Interactive survey form with dynamic questions and responsive design.",
+    tags: ["HTML", "CSS", "Bootstrap", "JS", "SupaBase"],
+    img: calculator,
+    live: "https://glowmode-calculator.netlify.app/",
+    github: "https://github.com/imama-ansari14/CodeAlpha_Projects.git",
+  },
+  {
+    id: "09",
+    title: "Postagram",
+    category: "Functionality",
+    desc: "Blog Post platform with user authentication, post creation and dynamic content display.",
+    tags: ["HTML", "CSS", "Bootstrap", "JS", "SupaBase"],
+    img: calculator,
+    live: "https://glowmode-calculator.netlify.app/",
+    github: "https://github.com/imama-ansari14/CodeAlpha_Projects.git",
   }
 
 ];
