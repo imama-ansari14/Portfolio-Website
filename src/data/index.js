@@ -2,7 +2,7 @@ import bistroBliss from "../assets/bistro-bliss.png";
 import tevily from "../assets/tevily.png";
 import IceAndSpice from "../assets/ice-and-spice.png";
 import QuranSabaq from "../assets/Quran-Sabaq.png";
-import AimersAcademy from "../assets/aimers-academy.png";
+import AimersAcademy from "../assets/Aimers-Academy.png";
 import ramdanCounter from "../assets/Ramadan-Counter.png";
 import calculator from "../assets/calc-project.png";
 export const PROJECTS = [
