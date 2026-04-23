@@ -70,7 +70,7 @@ const Footer = () => {
                 marginBottom: "16px",
               }}
             >
-              Frontend Developer · Crafting digital experiences
+              MERN Stack Web Developer | Turning ideas into interactive digital experiences
             </p>
 
             <a
