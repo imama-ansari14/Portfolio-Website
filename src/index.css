@@ -1,15 +1,29 @@
 @import "tailwindcss";
-@import url('https://fonts.googleapis.com/css2?family=Syne:wght@700;800&display=swap');
+/* Import Google Fonts */
+@import url("https://fonts.googleapis.com/css2?family=Syne:wght@400;700;800&family=DM+Sans:wght@300;400;500&display=swap");
 
 :root {
   --deep-plum: #512b42;
   --orchid: #7c4c75;
   --lavender: #cf9cc8;
+  --font-syne: "Syne", sans-serif;
+  --font-dm: "DM Sans", sans-serif;
 }
 
+/* Global Styles */
 body {
+  font-family: "DM Sans", sans-serif;
   @apply bg-[#0f0a0d] text-white selection:bg-[#cf9cc8] selection:text-[#512b42];
   overflow-x: hidden;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "Syne", sans-serif;
 }
 
 /* Custom scrollbar to match theme */

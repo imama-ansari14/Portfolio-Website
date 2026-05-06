@@ -55,53 +55,20 @@ const Hero = () => {
     return () => clearTimeout(timerRef.current);
   }, []);
 
-  /* ── GSAP entrance animations ── */
+  /* ── GSAP Animations ── */
   useGSAP(
     () => {
       const tl = gsap.timeline({ defaults: { ease: "power4.out" } });
 
-      tl.from(".hero-kicker", {
-        y: 24,
-        opacity: 0,
-        duration: 0.8,
-      })
+      tl.from(".hero-kicker", { y: 24, opacity: 0, duration: 0.8 })
         .from(
           ".hero-h-line",
-          {
-            y: 80,
-            opacity: 0,
-            stagger: 0.12,
-            duration: 1,
-          },
+          { y: 80, opacity: 0, stagger: 0.12, duration: 1 },
           "-=0.4"
         )
-        .from(
-          ".hero-type-row",
-          {
-            y: 60,
-            opacity: 0,
-            duration: 0.9,
-          },
-          "-=0.5"
-        )
-        .from(
-          ".hero-sub",
-          {
-            y: 20,
-            opacity: 0,
-            duration: 0.7,
-          },
-          "-=0.4"
-        )
-        .from(
-          ".hero-cta-wrap",
-          {
-            y: 20,
-            opacity: 0,
-            duration: 0.7,
-          },
-          "-=0.4"
-        )
+        .from(".hero-type-row", { y: 60, opacity: 0, duration: 0.9 }, "-=0.5")
+        .from(".hero-sub", { y: 20, opacity: 0, duration: 0.7 }, "-=0.4")
+        .from(".hero-cta-wrap", { y: 20, opacity: 0, duration: 0.7 }, "-=0.4")
         .from(
           ".glow-blob",
           {
@@ -113,15 +80,9 @@ const Hero = () => {
           },
           0
         )
-        .from(
-          ".hero-grid",
-          {
-            opacity: 0,
-            duration: 2,
-          },
-          0
-        );
+        .from(".hero-grid", { opacity: 0, duration: 2 }, 0);
 
+      // Floating Blobs
       gsap.to(".glow-blob-1", {
         x: 30,
         y: -20,
@@ -149,6 +110,7 @@ const Hero = () => {
         delay: 2,
       });
 
+      // Cursor Blink
       gsap.to(cursorRef.current, {
         opacity: 0,
         duration: 0.5,
@@ -157,6 +119,7 @@ const Hero = () => {
         ease: "steps(1)",
       });
 
+      // Scroll Indicator
       gsap.to(".scroll-arrow", {
         y: 8,
         duration: 1.2,
@@ -169,30 +132,20 @@ const Hero = () => {
     { scope: container }
   );
 
-  const handlePrimaryHover = (e) => {
-    gsap.to(e.currentTarget, {
-      scale: 1.04,
-      duration: 0.25,
-      ease: "power2.out",
-    });
-  };
-  const handlePrimaryLeave = (e) => {
-    gsap.to(e.currentTarget, {
-      scale: 1,
-      duration: 0.25,
-      ease: "power2.out",
-    });
-  };
+  const handlePrimaryHover = (e) =>
+    gsap.to(e.currentTarget, { scale: 1.04, duration: 0.25 });
+  const handlePrimaryLeave = (e) =>
+    gsap.to(e.currentTarget, { scale: 1, duration: 0.25 });
 
   return (
     <section
       ref={container}
       id="home"
-      className="relative h-screen flex items-center justify-center overflow-hidden"
-      style={{ background: "#0f0a0d" }}
+      className="relative h-screen flex items-center justify-center overflow-hidden bg-[#0f0a0d]"
     >
+      {/* Grid Overlay */}
       <div
-        className="hero-grid absolute inset-0"
+        className="hero-grid absolute inset-0 opacity-40"
         style={{
           backgroundImage:
             "linear-gradient(#512b4214 1px, transparent 1px), linear-gradient(90deg, #512b4214 1px, transparent 1px)",
@@ -200,260 +153,102 @@ const Hero = () => {
         }}
       />
 
+      {/* Decorative Blobs */}
       <div
-        className="glow-blob glow-blob-1 absolute rounded-full pointer-events-none"
+        className="glow-blob glow-blob-1 absolute rounded-full w-[300px] h-[300px] md:w-[520px] md:h-[520px] -left-20 top-1/2 -translate-y-1/2 bg-radial-gradient from-[#512b4260] via-[#512b4222] to-transparent blur-[40px] pointer-events-none"
         style={{
-          width: 520,
-          height: 520,
-          left: "-120px",
-          top: "50%",
-          transform: "translateY(-50%)",
           background:
             "radial-gradient(circle, #512b4260 0%, #512b4222 45%, transparent 75%)",
-          filter: "blur(40px)",
         }}
       />
       <div
-        className="glow-blob glow-blob-2 absolute rounded-full pointer-events-none"
+        className="glow-blob glow-blob-2 absolute rounded-full w-[250px] h-[250px] md:w-[440px] md:h-[440px] -right-10 -bottom-10 bg-radial-gradient from-[#7c4c7548] via-[#7c4c7518] to-transparent blur-[50px] pointer-events-none"
         style={{
-          width: 440,
-          height: 440,
-          right: "-80px",
-          bottom: "-60px",
           background:
             "radial-gradient(circle, #7c4c7548 0%, #7c4c7518 45%, transparent 75%)",
-          filter: "blur(50px)",
         }}
       />
       <div
-        className="glow-blob glow-blob-3 absolute rounded-full pointer-events-none"
+        className="glow-blob glow-blob-3 absolute rounded-full w-[200px] h-[200px] md:w-[300px] md:h-[300px] right-[10%] top-[-20px] bg-radial-gradient from-[#cf9cc822] to-transparent blur-[30px] pointer-events-none"
         style={{
-          width: 300,
-          height: 300,
-          right: "20%",
-          top: "-40px",
           background: "radial-gradient(circle, #cf9cc822 0%, transparent 70%)",
-          filter: "blur(30px)",
         }}
       />
 
-      <div
-        className="absolute inset-0 pointer-events-none"
-        style={{
-          background:
-            "conic-gradient(from 200deg at 15% 65%, #512b4230 0deg, transparent 55deg)",
-        }}
-      />
-      <div
-        className="absolute inset-0 pointer-events-none"
-        style={{
-          background:
-            "conic-gradient(from 20deg at 85% 25%, #7c4c7522 0deg, transparent 70deg)",
-        }}
-      />
-
+      {/* Content Container */}
       <div className="relative z-10 flex flex-col items-center text-center px-6 max-w-5xl w-full">
-        <div
-          className="hero-kicker flex items-center gap-3 mb-8"
-          style={{ overflow: "hidden" }}
-        >
-          <div
-            style={{
-              width: 32,
-              height: 1,
-              background: "linear-gradient(90deg, transparent, #512b42)",
-            }}
-          />
-          <span
-            style={{
-              fontSize: 10,
-              letterSpacing: "0.45em",
-              color: "#7c4c75",
-              textTransform: "uppercase",
-              fontFamily: "'Syne', sans-serif",
-              fontWeight: 600,
-            }}
-          >
+        {/* Kicker */}
+        <div className="hero-kicker flex items-center gap-3 mb-6 md:mb-8 overflow-hidden">
+          <div className="w-8 h-[1px] bg-gradient-to-r from-transparent to-[#512b42]" />
+          <span className="text-[10px] tracking-[0.45em] text-[#7c4c75] uppercase font-semibold font-['Syne']">
             Mern Stack Developer | Designer
           </span>
-          <div
-            style={{
-              width: 32,
-              height: 1,
-              background: "linear-gradient(90deg, #512b42, transparent)",
-            }}
-          />
+          <div className="w-8 h-[1px] bg-gradient-to-r from-[#512b42] to-transparent" />
         </div>
 
-        {/* Updated static headline font */}
-        <div style={{ overflow: "hidden", marginBottom: 4 }}>
-          <h1
-            className="hero-h-line"
-            style={{
-              fontSize: "clamp(44px, 7.5vw, 88px)",
-              fontWeight: 800,
-              textTransform: "uppercase",
-              color: "#ffffff",
-              lineHeight: 0.92,
-              letterSpacing: "-0.025em",
-              fontFamily: "'Syne', sans-serif",
-            }}
-          >
+        {/* Main Headline */}
+        <div className="overflow-hidden mb-1">
+          <h1 className="hero-h-line text-[38px] sm:text-[52px] md:text-[72px] lg:text-[84px] font-extrabold uppercase text-white leading-[0.95] tracking-tight font-['Syne']">
             YOUR IDEA DESERVES
           </h1>
         </div>
 
-        {/* Updated typewriter row font */}
-        <div
-          className="hero-type-row"
-          style={{
-            fontSize: "clamp(44px, 7.5vw, 88px)",
-            fontWeight: 800,
-            textTransform: "uppercase",
-            lineHeight: 0.92,
-            letterSpacing: "-0.025em",
-            fontFamily: "'Syne', sans-serif",
-            minHeight: "clamp(52px, 9vw, 100px)",
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-            marginBottom: 28,
-          }}
-        >
+        {/* Typewriter Row */}
+        <div className="hero-type-row flex items-center justify-center min-h-[50px] md:min-h-[90px] mb-6 md:mb-8 text-[38px] sm:text-[52px] md:text-[72px] lg:text-[84px] font-extrabold uppercase leading-[0.95] tracking-tight font-['Syne']">
           <span
             ref={typeRef}
-            style={{
-              background: "linear-gradient(135deg, #cf9cc8 0%, #7c4c75 100%)",
-              WebkitBackgroundClip: "text",
-              WebkitTextFillColor: "transparent",
-              backgroundClip: "text",
-            }}
+            className="bg-gradient-to-br from-[#cf9cc8] to-[#7c4c75] bg-clip-text text-transparent"
           />
           <span
             ref={cursorRef}
-            style={{
-              display: "inline-block",
-              width: 4,
-              height: "clamp(38px, 6.5vw, 72px)",
-              background: "#cf9cc8",
-              marginLeft: 6,
-              borderRadius: 2,
-              flexShrink: 0,
-              WebkitTextFillColor: "#cf9cc8",
-            }}
+            className="inline-block w-1 md:w-[6px] h-[34px] sm:h-[48px] md:h-[64px] bg-[#cf9cc8] ml-2 rounded-sm"
           />
         </div>
 
-        <p
-          className="hero-sub"
-          style={{
-            fontSize: 14,
-            color: "rgba(255,255,255,0.38)",
-            fontFamily: "sans-serif",
-            letterSpacing: "0.06em",
-            lineHeight: 1.7,
-            maxWidth: 460,
-            marginBottom: 36,
-          }}
-        >
+        {/* Subtext */}
+        <p className="hero-sub text-[13px] md:text-[14px] text-white/40 font-sans tracking-wide leading-relaxed max-w-[90%] md:max-w-[460px] mb-10">
           I craft unconventional digital experiences. No templates. No boring.
           Just fast, wild, conversion-focused websites.
         </p>
 
-        <div className="hero-cta-wrap flex gap-4 items-center flex-wrap justify-center">
+        {/* CTAs */}
+        <div className="hero-cta-wrap flex flex-col sm:flex-row gap-4 items-center justify-center">
           <button
             onMouseEnter={handlePrimaryHover}
             onMouseLeave={handlePrimaryLeave}
-            style={{
-              background: "linear-gradient(135deg, #512b42 0%, #7c4c75 100%)",
-              color: "#fff",
-              border: "none",
-              borderRadius: 8,
-              padding: "14px 34px",
-              fontSize: 11,
-              letterSpacing: "0.22em",
-              textTransform: "uppercase",
-              cursor: "pointer",
-              fontFamily: "'Syne', sans-serif",
-              fontWeight: 700,
-              position: "relative",
-              overflow: "hidden",
-            }}
+            className="w-full sm:w-auto bg-gradient-to-br from-[#512b42] to-[#7c4c75] text-white px-8 py-4 rounded-lg text-[11px] tracking-[0.22em] font-bold uppercase font-['Syne'] cursor-pointer transition-transform"
           >
             VIEW PROJECTS
           </button>
 
           <button
-            onMouseEnter={(e) =>
-              gsap.to(e.currentTarget, { scale: 1.04, duration: 0.25 })
-            }
-            onMouseLeave={(e) =>
-              gsap.to(e.currentTarget, { scale: 1, duration: 0.25 })
-            }
-            style={{
-              background: "transparent",
-              color: "#cf9cc8",
-              border: "1px solid rgba(124, 76, 117, 0.5)",
-              borderRadius: 8,
-              padding: "14px 28px",
-              fontSize: 11,
-              letterSpacing: "0.22em",
-              textTransform: "uppercase",
-              cursor: "pointer",
-              fontFamily: "'Syne', sans-serif",
-            }}
+            onMouseEnter={handlePrimaryHover}
+            onMouseLeave={handlePrimaryLeave}
+            className="w-full sm:w-auto bg-transparent text-[#cf9cc8] border border-[#7c4c7580] px-8 py-4 rounded-lg text-[11px] tracking-[0.22em] font-bold uppercase font-['Syne'] cursor-pointer transition-transform"
           >
             CONTACT ME
           </button>
         </div>
       </div>
 
-      <div
-        className="absolute bottom-8 left-1/2 flex flex-col items-center gap-2"
-        style={{ transform: "translateX(-50%)" }}
-      >
-        <span
-          style={{
-            fontSize: 8,
-            letterSpacing: "0.35em",
-            color: "#512b42",
-            textTransform: "uppercase",
-            fontFamily: "sans-serif",
-          }}
-        >
+      {/* Scroll Indicator */}
+      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2">
+        <span className="text-[8px] tracking-[0.35em] text-[#512b42] uppercase font-sans">
           SCROLL
         </span>
-        <div
-          className="scroll-arrow"
-          style={{
-            width: 1,
-            height: 32,
-            background: "linear-gradient(to bottom, #512b42, transparent)",
-          }}
-        />
+        <div className="scroll-arrow w-[1px] h-8 bg-gradient-to-b from-[#512b42] to-transparent" />
       </div>
 
+      {/* Corner Accents */}
       {[
-        { top: 24, left: 24, borderTop: true, borderLeft: true },
-        { top: 24, right: 24, borderTop: true, borderRight: true },
-        { bottom: 24, left: 24, borderBottom: true, borderLeft: true },
-        { bottom: 24, right: 24, borderBottom: true, borderRight: true },
+        { top: "top-6", left: "left-6", border: "border-t border-l" },
+        { top: "top-6", right: "right-6", border: "border-t border-r" },
+        { bottom: "bottom-6", left: "left-6", border: "border-b border-l" },
+        { bottom: "bottom-6", right: "right-6", border: "border-b border-r" },
       ].map((pos, i) => (
         <div
           key={i}
-          style={{
-            position: "absolute",
-            width: 28,
-            height: 28,
-            top: pos.top,
-            bottom: pos.bottom,
-            left: pos.left,
-            right: pos.right,
-            borderTop: pos.borderTop ? "1px solid #512b4266" : "none",
-            borderBottom: pos.borderBottom ? "1px solid #512b4266" : "none",
-            borderLeft: pos.borderLeft ? "1px solid #512b4266" : "none",
-            borderRight: pos.borderRight ? "1px solid #512b4266" : "none",
-          }}
+          className={`absolute w-7 h-7 border-[#512b4266] ${pos.top} ${pos.bottom} ${pos.left} ${pos.right} ${pos.border}`}
         />
       ))}
     </section>
