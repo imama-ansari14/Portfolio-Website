@@ -1,338 +1,128 @@
-// Work.jsx
-import { useState, useRef, useCallback } from "react";
+import { useRef } from "react";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
-import { ExternalLink, Github } from "lucide-react";
+import ScrollTrigger from "gsap/ScrollTrigger";
+import { ArrowUpRight } from "lucide-react";
 import { PROJECTS } from "../data/index";
 
-const categories = ["All", "Web Design", "Functionality"];
-
-const ProjectCard = ({ p, tall = false }) => {
-  const cardRef = useRef();
-
-  const handleMouseMove = useCallback((e) => {
-    const rect = e.currentTarget.getBoundingClientRect();
-    const x = e.clientX - rect.left;
-    const y = e.clientY - rect.top;
-    const sp = cardRef.current?.querySelector(".spotlight");
-    if (sp)
-      sp.style.background = `radial-gradient(320px circle at ${x}px ${y}px, rgba(81,43,66,0.55) 0%, rgba(40,15,30,0.35) 45%, transparent 70%)`;
-  }, []);
-
-  const handleMouseEnter = useCallback((e) => {
-    e.currentTarget.style.borderColor = "rgba(207,156,200,0.38)";
-    e.currentTarget.style.transform = "translateY(-5px)";
-  }, []);
-
-  const handleMouseLeave = useCallback((e) => {
-    e.currentTarget.style.borderColor = "rgba(207,156,200,0.1)";
-    e.currentTarget.style.transform = "translateY(0)";
-    const sp = cardRef.current?.querySelector(".spotlight");
-    if (sp) sp.style.background = "none";
-  }, []);
-
-  return (
-    <div
-      ref={cardRef}
-      className="project-card group relative overflow-hidden rounded-[18px]"
-      style={{
-        background: "#140b10",
-        border: "1px solid rgba(207,156,200,0.1)",
-        transition: "border-color 0.3s, transform 0.35s",
-        cursor: "pointer",
-      }}
-      onMouseMove={handleMouseMove}
-      onMouseEnter={handleMouseEnter}
-      onMouseLeave={handleMouseLeave}
-    >
-      {/* Featured bar */}
-      {p.featured && (
-        <div
-          className="absolute left-0 top-0 bottom-0 w-[3px] z-20"
-          style={{ background: "linear-gradient(180deg, #cf9cc8, #512b42)" }}
-        />
-      )}
-
-      {/* Glow dot */}
-      <div
-        className="absolute top-3 right-3 w-[6px] h-[6px] rounded-full z-20"
-        style={{ background: "#cf9cc8", opacity: 0.45 }}
-      />
-
-      {/* Spotlight */}
-      <div className="spotlight absolute inset-0 z-10 pointer-events-none rounded-[18px]" />
-
-      {/* Image */}
-      <div className="relative overflow-hidden">
-        <img
-          src={p.img}
-          alt={p.title}
-          className="w-full block object-cover transition-transform duration-700 group-hover:scale-105"
-          style={{
-            height: tall ? "220px" : "130px",
-            filter: "brightness(0.7)",
-          }}
-          onError={(e) => {
-            e.target.style.display = "none";
-            e.target.nextSibling.style.display = "flex";
-          }}
-        />
-        {/* Fallback */}
-        <div
-          style={{
-            height: tall ? "220px" : "130px",
-            background: "linear-gradient(135deg, #1e0d18, #0f0a0d)",
-            display: "none",
-            alignItems: "center",
-            justifyContent: "center",
-            fontSize: "10px",
-            letterSpacing: "0.1em",
-            color: "rgba(207,156,200,0.18)",
-          }}
-        >
-          {p.title}
-        </div>
-
-        {/* Gradient overlay */}
-        <div
-          className="absolute inset-0"
-          style={{
-            background:
-              "linear-gradient(to top, rgba(15,10,13,0.97) 0%, rgba(15,10,13,0.4) 55%, transparent 100%)",
-          }}
-        />
-
-        {/* Slide-up on hover */}
-        <div
-          className="absolute bottom-0 left-0 right-0 p-4 translate-y-2 opacity-0 group-hover:translate-y-0 group-hover:opacity-100"
-          style={{ transition: "all 0.4s cubic-bezier(0.23,1,0.32,1)" }}
-        >
-          <p
-            style={{
-              fontSize: "11.5px",
-              color: "rgba(207,156,200,0.78)",
-              lineHeight: 1.6,
-              marginBottom: "10px",
-            }}
-          >
-            {p.desc}
-          </p>
-          <div className="flex gap-2">
-            <a
-              href={p.live}
-              target="_blank"
-              rel="noreferrer"
-              className="flex items-center gap-1"
-              style={{
-                fontSize: "10px",
-                letterSpacing: "0.1em",
-                textTransform: "uppercase",
-                color: "var(--lavender)",
-                textDecoration: "none",
-                padding: "4px 12px",
-                borderRadius: "20px",
-                border: "1px solid rgba(207,156,200,0.3)",
-                background: "rgba(207,156,200,0.07)",
-              }}
-            >
-              <ExternalLink size={10} /> Live
-            </a>
-
-            <a
-              href={p.github}
-              target="_blank"
-              rel="noreferrer"
-              className="flex items-center gap-1"
-              style={{
-                fontSize: "10px",
-                letterSpacing: "0.1em",
-                textTransform: "uppercase",
-                color: "var(--lavender)",
-                textDecoration: "none",
-                padding: "4px 12px",
-                borderRadius: "20px",
-                border: "1px solid rgba(207,156,200,0.3)",
-                background: "rgba(207,156,200,0.07)",
-              }}
-            >
-              <Github size={10} /> GitHub
-            </a>
-          </div>
-        </div>
-      </div>
-
-      {/* Card body */}
-      <div style={{ padding: "14px 18px 18px" }}>
-        <p
-          style={{
-            fontSize: "9px",
-            letterSpacing: "0.18em",
-            color: "rgba(124,76,117,0.7)",
-            marginBottom: "5px",
-          }}
-        >
-          {p.id}
-          {p.featured ? " — Featured" : ""}
-        </p>
-        <p
-          style={{
-            fontSize: "14px",
-            fontWeight: 500,
-            color: "#e8dde5",
-            marginBottom: "10px",
-            lineHeight: 1.3,
-          }}
-        >
-          {p.title}
-        </p>
-        <div className="flex flex-wrap gap-[5px]">
-          {p.tags.map((tag) => (
-            <span
-              key={tag}
-              style={{
-                fontSize: "9px",
-                letterSpacing: "0.07em",
-                padding: "2px 9px",
-                borderRadius: "20px",
-                border: "1px solid rgba(207,156,200,0.15)",
-                color: "var(--lavender)",
-                background: "rgba(207,156,200,0.04)",
-              }}
-            >
-              {tag}
-            </span>
-          ))}
-        </div>
-      </div>
-    </div>
-  );
-};
+gsap.registerPlugin(ScrollTrigger);
 
 const Work = () => {
-  const [filter, setFilter] = useState("All");
-  const container = useRef();
+  const sectionRef = useRef();
+  const trackRef = useRef();
+  const progressBarRef = useRef();
 
-  const filteredProjects =
-    filter === "All" ? PROJECTS : PROJECTS.filter((p) => p.category === filter);
+  useGSAP(
+    () => {
+      const track = trackRef.current;
+      const section = sectionRef.current;
 
-  useGSAP(() => {
-    gsap.fromTo(
-      ".project-card",
-      { opacity: 0, y: 28 },
-      { opacity: 1, y: 0, stagger: 0.07, duration: 0.55, ease: "power3.out" }
-    );
-  }, [filter]);
+      const scrollDistance = track.scrollWidth - window.innerWidth + 100;
 
-  // Alternating layout — odd rows: big left + 2 small right
-  //                      even rows: 2 small left + big right
-  const renderAlternating = () => {
-    const rows = [];
-    let i = 0;
-    let rowIndex = 0;
+      const tween = gsap.to(track, {
+        x: -scrollDistance,
+        ease: "none",
+        scrollTrigger: {
+          trigger: section,
+          start: "top top",
+          end: () => `+=${scrollDistance}`,
+          scrub: 1,
+          pin: true,
+          anticipatePin: 1,
+          invalidateOnRefresh: true,
+          onUpdate: (self) => {
+            if (progressBarRef.current) {
+              progressBarRef.current.style.width = `${self.progress * 100}%`;
+            }
+          },
+        },
+      });
 
-    while (i < filteredProjects.length) {
-      const isOdd = rowIndex % 2 === 0;
-
-      if (isOdd) {
-        // Big LEFT, 2 small RIGHT
-        const big = filteredProjects[i];
-        const small1 = filteredProjects[i + 1];
-        const small2 = filteredProjects[i + 2];
-
-        rows.push(
-          <div
-            key={rowIndex}
-            className="grid gap-4"
-            style={{ gridTemplateColumns: "1.6fr 1fr" }}
-          >
-            {/* Big card */}
-            {big && <ProjectCard p={big} tall={true} />}
-
-            {/* 2 small stacked */}
-            <div className="flex flex-col gap-4">
-              {small1 && <ProjectCard p={small1} tall={false} />}
-              {small2 && <ProjectCard p={small2} tall={false} />}
-            </div>
-          </div>
-        );
-        i += 3;
-      } else {
-        // 2 small LEFT, big RIGHT
-        const small1 = filteredProjects[i];
-        const small2 = filteredProjects[i + 1];
-        const big = filteredProjects[i + 2];
-
-        rows.push(
-          <div
-            key={rowIndex}
-            className="grid gap-4"
-            style={{ gridTemplateColumns: "1fr 1.6fr" }}
-          >
-            {/* 2 small stacked */}
-            <div className="flex flex-col gap-4">
-              {small1 && <ProjectCard p={small1} tall={false} />}
-              {small2 && <ProjectCard p={small2} tall={false} />}
-            </div>
-
-            {/* Big card */}
-            {big && <ProjectCard p={big} tall={true} />}
-          </div>
-        );
-        i += 3;
-      }
-
-      rowIndex++;
-    }
-
-    return rows;
-  };
+      return () => {
+        tween.kill();
+        ScrollTrigger.getAll().forEach((t) => t.kill());
+      };
+    },
+    { scope: sectionRef }
+  );
 
   return (
     <section
+      ref={sectionRef}
       id="projects"
-      ref={container}
-      style={{ background: "#0f0a0d", padding: "100px 40px" }}
+      className="relative h-screen w-full bg-[#0f0a0d] overflow-hidden flex flex-col justify-between "
     >
-      <div className="max-w-6xl mx-auto">
-        {/* Header */}
-        <div
-          className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-14"
-          style={{
-            borderBottom: "1px solid rgba(207,156,200,0.1)",
-            paddingBottom: "36px",
-          }}
-        >
-          {/* Filter */}
-          <div className="flex gap-2 flex-wrap">
-            {categories.map((cat) => (
-              <button
-                key={cat}
-                onClick={() => setFilter(cat)}
-                style={{
-                  padding: "6px 18px",
-                  borderRadius: "20px",
-                  fontSize: "10px",
-                  letterSpacing: "0.12em",
-                  textTransform: "uppercase",
-                  cursor: "pointer",
-                  transition: "all 0.25s",
-                  border:
-                    filter === cat
-                      ? "1px solid rgba(207,156,200,0.4)"
-                      : "1px solid rgba(124,76,117,0.35)",
-                  background:
-                    filter === cat ? "var(--deep-plum)" : "transparent",
-                  color: filter === cat ? "var(--lavender)" : "var(--orchid)",
-                }}
-              >
-                {cat}
-              </button>
-            ))}
-          </div>
+      {/* ── Header Section (Fixed Overlap) ── */}
+      <div className="px-6 md:px-16 flex justify-between items-start z-20">
+        <div>
+          <p className="font-dm text-[10px] tracking-[0.3em] text-[#7c4c75] uppercase mb-2">
+            ✦ Selected Work
+          </p>
+          <h2 className="font-syne text-6xl md:text-8xl font-extrabold text-[#e8dde5] leading-[0.85] tracking-tighter uppercase">
+            Our Latest <br />
+            <span className="text-[#cf9cc8]">Projects</span>
+          </h2>
         </div>
+      </div>
 
-        {/* Alternating layout */}
-        <div className="flex flex-col gap-4">{renderAlternating()}</div>
+      {/* ── Scrollable Track (Fixed Card Sizes) ── */}
+      <div className="relative flex-1 flex items-center mt-10">
+        <div
+          ref={trackRef}
+          className="flex gap-10 px-16 will-change-transform h-[450px]"
+        >
+          {PROJECTS.map((p, i) => (
+            <div
+              key={`${p.id}-${i}`}
+              className="relative flex-shrink-0 w-[380px] md:w-[480px] h-full bg-[#140b10] rounded-[32px] border border-[#cf9cc810] overflow-hidden group hover:border-[#cf9cc840] transition-all duration-500"
+            >
+              {/* Image Area */}
+              <div className="relative h-[65%] overflow-hidden">
+               
+                <div className="absolute top-2 right-3 z-10 font-dm text-[9px] tracking-widest text-white bg-[#7c4c75] px-2 py-1.5 rounded-full uppercase font-bold">
+                  {p.category}
+                </div>
+
+                <img
+                  src={p.img}
+                  alt={p.title}
+                  className="w-full h-full object-cover brightness-[0.85] group-hover:brightness-100 group-hover:scale-105 transition-all duration-700"
+                />
+              </div>
+
+              {/* Text Area */}
+              <div className="p-8 h-[35%] flex flex-col justify-between bg-[#140b10]">
+                <div>
+                  <h3 className="font-syne text-3xl font-bold text-[#e8dde5] tracking-tight">
+                    {p.title}
+                  </h3>
+                  <p className="text-[11px] text-white/30 uppercase tracking-[0.2em] font-dm mt-1">
+                    {p.tags[0]} — {p.tags[1]}
+                  </p>
+                </div>
+
+                <div className="flex justify-between items-center mt-4">
+                  <p className="text-[11px] font-dm text-[#7c4c75] font-black tracking-widest">
+                    2024
+                  </p>
+                  <div className="w-12 h-12 rounded-full bg-[#512b42] flex items-center justify-center text-[#cf9cc8] group-hover:bg-[#cf9cc8] group-hover:text-[#512b42] group-hover:rotate-45 transition-all duration-500">
+                    <ArrowUpRight size={22} />
+                  </div>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {/* ── Progress Bar Footer ── */}
+      <div className="px-16 w-full flex flex-col gap-4 mt-8">
+        <div className="w-full h-[1px] bg-white/10 relative">
+          <div
+            ref={progressBarRef}
+            className="absolute top-0 left-0 h-full bg-[#cf9cc8] shadow-[0_0_10px_#cf9cc8]"
+          />
+        </div>
       </div>
     </section>
   );

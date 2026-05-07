@@ -10,7 +10,7 @@ export const PROJECTS = [
     id: "01",
     featured: true,
     title: "Quran Sabaq Platform",
-    category: "Web Design",
+    category: "Web Development",
     desc: "Online Quran education platform with multi-tier pricing, contact form, and WhatsApp support.",
     tags: ["React", "Tailwind", "Formspree", "GSAP"],
     img: QuranSabaq,
@@ -20,7 +20,7 @@ export const PROJECTS = [
   {
     id: "03",
     title: "Ice And Spice",
-    category: "Web Design",
+    category: "Web Dvelopment",
     desc: "Restaurant website with vibrant design, menu showcase and contact form.",
     tags: ["React", "Tailwind"],
     img: IceAndSpice,
@@ -50,7 +50,7 @@ export const PROJECTS = [
   {
     id: "06",
     title: "Ramdan Counter And Calender",
-    category: "Functionality",
+    category: "API & Functionality",
     desc: "",
     tags: ["React", "Tailwind", "API"],
     img: ramdanCounter,
