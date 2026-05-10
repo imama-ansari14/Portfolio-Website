@@ -55,7 +55,7 @@ const Work = () => {
       {/* ── Header Section (Fixed Overlap) ── */}
       <div className="px-6 md:px-16 flex justify-between items-start z-20">
         <div>
-          <p className="font-dm text-[10px] tracking-[0.3em] text-[#7c4c75] uppercase mb-2">
+          <p className="font-dm text-[10px] tracking-[0.3em] text-[#7c4c75] uppercase my-3">
             ✦ Selected Work
           </p>
           <h2 className="font-syne text-6xl md:text-8xl font-extrabold text-[#e8dde5] leading-[0.85] tracking-tighter uppercase">
@@ -78,7 +78,6 @@ const Work = () => {
             >
               {/* Image Area */}
               <div className="relative h-[65%] overflow-hidden">
-               
                 <div className="absolute top-2 right-3 z-10 font-dm text-[9px] tracking-widest text-white bg-[#7c4c75] px-2 py-1.5 rounded-full uppercase font-bold">
                   {p.category}
                 </div>

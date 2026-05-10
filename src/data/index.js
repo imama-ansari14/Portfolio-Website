@@ -5,6 +5,7 @@ import QuranSabaq from "../assets/Quran-Sabaq.png";
 import AimersAcademy from "../assets/Aimers-Academy.png";
 import ramdanCounter from "../assets/Ramadan-Counter.png";
 import calculator from "../assets/calc-project.png";
+import SurveyForm from "../assets/SurveyForm.png";
 export const PROJECTS = [
   {
     id: "01",
@@ -83,7 +84,7 @@ export const PROJECTS = [
     category: "Functionality",
     desc: "Interactive survey form with dynamic questions and responsive design.",
     tags: ["HTML", "CSS", "Bootstrap", "JS", "SupaBase"],
-    img: calculator,
+    img: SurveyForm,
     live: "https://glowmode-calculator.netlify.app/",
     github: "https://github.com/imama-ansari14/CodeAlpha_Projects.git",
   },
