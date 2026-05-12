@@ -5,23 +5,23 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { MotionPathPlugin } from "gsap/MotionPathPlugin";
 
 // Importing local assets from your src/assets/ folder
-import htmlLogo from "../assets/html5.svg";
-import cssLogo from "../assets/css.svg";
-import jsLogo from "../assets/javascript.svg";
-import tsLogo from "../assets/typescript.svg";
-import reactLogo from "../assets/react.svg";
-import nextLogo from "../assets/nextjs.svg";
-import tailwindLogo from "../assets/tailwindcss.svg";
-import bootstrapLogo from "../assets/bootstrap.svg";
-import gsapLogo from "../assets/gsap.svg";
-import figmaLogo from "../assets/figma.svg";
-import viteLogo from "../assets/vite.svg";
-import gitLogo from "../assets/git.svg";
-import githubLogo from "../assets/github.svg";
-import vscodeLogo from "../assets/vscode.svg";
-import supabaseLogo from "../assets/supabase.svg";
-import netlifyLogo from "../assets/netlify.svg";
-import vercelLogo from "../assets/vercel.svg";
+import htmlLogo from "../assets/Stack/html5.svg";
+import cssLogo from "../assets/Stack/css.svg";
+import jsLogo from "../assets/Stack/javascript.svg";
+import tsLogo from "../assets/Stack/typescript.svg";
+import reactLogo from "../assets/Stack/react.svg";
+import nextLogo from "../assets/Stack/nextjs.svg";
+import tailwindLogo from "../assets/Stack/tailwindcss.svg";
+import bootstrapLogo from "../assets/Stack/bootstrap.svg";
+import gsapLogo from "../assets/Stack/gsap.svg";
+import figmaLogo from "../assets/Stack/figma.svg";
+import viteLogo from "../assets/Stack/vite.svg";
+import gitLogo from "../assets/Stack/git.svg";
+import githubLogo from "../assets/Stack/github.svg";
+import vscodeLogo from "../assets/Stack/vscode.svg";
+import supabaseLogo from "../assets/Stack/supabase.svg";
+import netlifyLogo from "../assets/Stack/netlify.svg";
+import vercelLogo from "../assets/Stack/vercel.svg";
 
 gsap.registerPlugin(ScrollTrigger, MotionPathPlugin);
 
