@@ -1,5 +1,5 @@
 // Footer.jsx
-import { Github, Linkedin, Mail } from "lucide-react";
+import { Github, Linkedin, Instagram, Mail } from "lucide-react";
 import logo from "../assets/logo.png";
 
 const Footer = () => {
@@ -7,7 +7,7 @@ const Footer = () => {
 
   return (
     <footer
-    id="footer"
+      id="footer"
       className="relative overflow-hidden"
       style={{ background: "#0f0a0d", color: "var(--lavender)" }}
     >
@@ -70,7 +70,8 @@ const Footer = () => {
                 marginBottom: "16px",
               }}
             >
-              MERN Stack Web Developer | Turning ideas into interactive digital experiences
+              MERN Stack Web Developer | Turning ideas into interactive digital
+              experiences
             </p>
 
             <a
@@ -134,84 +135,48 @@ const Footer = () => {
 
           {/* Social Links */}
           <div>
-            <h2
-              style={{
-                fontWeight: 500,
-                letterSpacing: "0.14em",
-                textTransform: "uppercase",
-                color: "white",
-                marginBottom: "14px",
-              }}
-            >
+            <h2 className="font-medium tracking-[0.14em] uppercase text-white text-center mb-3.5">
               Connect
             </h2>
-            <div
-              style={{ display: "flex", flexDirection: "column", gap: "10px" }}
-            >
+
+            <div className="flex flex-col gap-2.5">
+              {/* GitHub */}
               <a
                 href="https://github.com/imama-ansari14"
                 target="_blank"
                 rel="noreferrer"
-                style={{
-                  display: "flex",
-                  alignItems: "center",
-                  gap: "10px",
-                  color: "var(--lavender)",
-                  textDecoration: "none",
-                  fontSize: "15px",
-                  padding: "6px 10px",
-                  borderRadius: "8px",
-                  border: "1px solid rgba(207,156,200,0.15)",
-                }}
+                className="flex items-center gap-2.5 text-[var(--lavender)] no-underline text-sm px-2.5 py-1.5 rounded-lg border border-[rgba(207,156,200,0.15)] transition-colors hover:bg-white/5"
               >
-                <span
-                  style={{
-                    background: "var(--deep-plum)",
-                    borderRadius: "8px",
-                    width: "30px",
-                    height: "30px",
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "center",
-                    color: "var(--lavender)",
-                  }}
-                >
+                <span className="bg-[#24292e] text-white rounded-lg w-7.5 h-7.5 flex items-center justify-center shrink-0">
                   <Github size={15} />
                 </span>
                 GitHub
               </a>
 
+              {/* LinkedIn */}
               <a
                 href="https://linkedin.com/in/imama-ansari-5a604b337"
                 target="_blank"
                 rel="noreferrer"
-                style={{
-                  display: "flex",
-                  alignItems: "center",
-                  gap: "10px",
-                  color: "var(--lavender)",
-                  textDecoration: "none",
-                  fontSize: "15px",
-                  padding: "6px 10px",
-                  borderRadius: "8px",
-                  border: "1px solid rgba(207,156,200,0.15)",
-                }}
+                className="flex items-center gap-2.5 text-[var(--lavender)] no-underline text-sm px-2.5 py-1.5 rounded-lg border border-[rgba(207,156,200,0.15)] transition-colors hover:bg-white/5"
               >
-                <span
-                  style={{
-                    background: "var(--orchid)",
-                    borderRadius: "8px",
-                    width: "30px",
-                    height: "30px",
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "center",
-                    color: "var(--lavender)",
-                  }}
-                >
+                <span className="bg-[#0077b5] text-white rounded-lg w-7.5 h-7.5 flex items-center justify-center shrink-0">
                   <Linkedin size={15} />
                 </span>
                 LinkedIn
+              </a>
+
+              {/* Instagram */}
+              <a
+                href="https://instagram.com/webbyimama" // Swapped with standard fallback handle structure
+                target="_blank"
+                rel="noreferrer"
+                className="flex items-center gap-2.5 text-[var(--lavender)] no-underline text-sm px-2.5 py-1.5 rounded-lg border border-[rgba(207,156,200,0.15)] transition-colors hover:bg-white/5"
+              >
+                <span className="bg-[linear-gradient(45deg,#f09433_0%,#e6683c_25%,#dc2743_50%,#cc2366_75%,#bc1888_100%)] text-white rounded-lg w-7.5 h-7.5 flex items-center justify-center shrink-0">
+                  <Instagram size={15} />
+                </span>
+                Instagram
               </a>
             </div>
           </div>
