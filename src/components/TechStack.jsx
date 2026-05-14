@@ -96,7 +96,7 @@ const TechStack = () => {
 
   return (
     <section
-    id="stack"
+      id="stack"
       ref={sectionRef}
       className="relative w-full bg-black overflow-hidden min-h-screen"
     >
