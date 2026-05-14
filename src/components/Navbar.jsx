@@ -4,7 +4,7 @@ import { useGSAP } from "@gsap/react";
 import { Menu, X } from "lucide-react";
 import Logo from "../assets/logo.png";
 
-const navItems = ["About", "Projects", "Stack", "Contact"];
+const navItems = ["About", "Projects", "Stack", "Certificates", "Contact"];
 
 // ✅ Smooth scroll helper
 const scrollToSection = (e, id) => {

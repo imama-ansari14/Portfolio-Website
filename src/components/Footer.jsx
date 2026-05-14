@@ -1,9 +1,8 @@
-// Footer.jsx
 import { Github, Linkedin, Instagram, Mail } from "lucide-react";
 import logo from "../assets/logo.png";
 
 const Footer = () => {
-  const navLinks = ["Home", "About", "Projects", "Contact"];
+  const navLinks = ["Home", "About", "Projects","Certificates", "Contact"];
 
   return (
     <footer
@@ -139,7 +138,7 @@ const Footer = () => {
               Connect
             </h2>
 
-            <div className="flex flex-col gap-2.5">
+            <div className="flex flex-col gap-3">
               {/* GitHub */}
               <a
                 href="https://github.com/imama-ansari14"
@@ -155,7 +154,7 @@ const Footer = () => {
 
               {/* LinkedIn */}
               <a
-                href="https://linkedin.com/in/imama-ansari-5a604b337"
+                href="https://linkedin.com/in/imama-ansari"
                 target="_blank"
                 rel="noreferrer"
                 className="flex items-center gap-2.5 text-[var(--lavender)] no-underline text-sm px-2.5 py-1.5 rounded-lg border border-[rgba(207,156,200,0.15)] transition-colors hover:bg-white/5"
@@ -168,7 +167,7 @@ const Footer = () => {
 
               {/* Instagram */}
               <a
-                href="https://instagram.com/webbyimama" // Swapped with standard fallback handle structure
+                href="https://instagram.com/webbyimama"
                 target="_blank"
                 rel="noreferrer"
                 className="flex items-center gap-2.5 text-[var(--lavender)] no-underline text-sm px-2.5 py-1.5 rounded-lg border border-[rgba(207,156,200,0.15)] transition-colors hover:bg-white/5"
