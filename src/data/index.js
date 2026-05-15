@@ -1,11 +1,11 @@
-import bistroBliss from "../assets/bistro-bliss.png";
-import tevily from "../assets/tevily.png";
-import IceAndSpice from "../assets/ice-and-spice.png";
-import QuranSabaq from "../assets/Quran-Sabaq.png";
-import AimersAcademy from "../assets/Aimers-Academy.png";
-import ramdanCounter from "../assets/Ramadan-Counter.png";
-import calculator from "../assets/calc-project.png";
-import SurveyForm from "../assets/SurveyForm.png";
+import bistroBliss from "../assets/Work/bistro-bliss.png";
+import tevily from "../assets/Work/tevily.png";
+import IceAndSpice from "../assets/Work/ice-and-spice.png";
+import QuranSabaq from "../assets/Work/Quran-Sabaq.png";
+import AimersAcademy from "../assets/Work/Aimers-Academy.png";
+import ramdanCounter from "../assets/Work/Ramadan-Counter.png";
+import calculator from "../assets/Work/calc-project.png";
+import SurveyForm from "../assets/Work/SurveyForm.png";
 export const PROJECTS = [
   {
     id: "01",
