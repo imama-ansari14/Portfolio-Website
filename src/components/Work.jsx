@@ -55,10 +55,7 @@ const Work = () => {
       {/* ── Header Section (Fixed Overlap) ── */}
       <div className="px-6 md:px-16 flex justify-between items-start z-20">
         <div>
-          <p className="font-dm text-[10px] tracking-[0.3em] text-[#7c4c75] uppercase my-3">
-            ✦ Selected Work
-          </p>
-          <h2 className="font-syne text-6xl md:text-8xl font-extrabold text-[#e8dde5] leading-[0.85] tracking-tighter uppercase">
+          <h2 className="font-syne text-6xl md:text-8xl font-extrabold text-[#e8dde5] leading-[0.85] tracking-tighter uppercase mt-5">
             Our Latest <br />
             <span className="text-[#cf9cc8]">Projects</span>
           </h2>
@@ -66,7 +63,7 @@ const Work = () => {
       </div>
 
       {/* ── Scrollable Track (Fixed Card Sizes) ── */}
-      <div className="relative flex-1 flex items-center mt-10">
+      <div className="relative flex-1 flex items-center mt-5">
         <div
           ref={trackRef}
           className="flex gap-10 px-16 will-change-transform h-[450px]"
