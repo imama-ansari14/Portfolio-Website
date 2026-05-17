@@ -118,16 +118,6 @@ const Hero = () => {
         yoyo: true,
         ease: "steps(1)",
       });
-
-      // Scroll Indicator
-      gsap.to(".scroll-arrow", {
-        y: 8,
-        duration: 1.2,
-        repeat: -1,
-        yoyo: true,
-        ease: "sine.inOut",
-        delay: 2,
-      });
     },
     { scope: container }
   );
@@ -229,14 +219,6 @@ const Hero = () => {
             CONTACT ME
           </button>
         </div>
-      </div>
-
-      {/* Scroll Indicator */}
-      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2">
-        <span className="text-[8px] tracking-[0.35em] text-[#512b42] uppercase font-sans">
-          SCROLL
-        </span>
-        <div className="scroll-arrow w-[1px] h-8 bg-gradient-to-b from-[#512b42] to-transparent" />
       </div>
 
       {/* Corner Accents */}
