@@ -17,7 +17,7 @@ export const PROJECTS = [
     desc: "Online Quran education platform with multi-tier pricing, contact form, and WhatsApp support.",
     tags: ["React", "Tailwind", "Formspree", "GSAP"],
     img: QuranSabaq,
-    live: "https://",
+    live: "https://quran-sabaq.vercel.app/",
     github: "https://github.com/imama-ansari14",
   },
   {
@@ -27,7 +27,7 @@ export const PROJECTS = [
     desc: "Restaurant website with vibrant design, menu showcase and contact form.",
     tags: ["React", "Tailwind"],
     img: IceAndSpice,
-    live: "https://",
+    live: "https://resturant-demo-rho.vercel.app/",
     github: "https://github.com/imama-ansari14",
   },
   {
@@ -47,7 +47,7 @@ export const PROJECTS = [
     desc: "Educational platform with course listings, user authentication and admin dashboard.",
     tags: ["HTML", "CSS", "Bootstrap", "Formspree"],
     img: AimersAcademy,
-    live: "",
+    live: "https://imama-ansari14.github.io/Aimers-Academy/",
     github: "https://github.com/imama-ansari14",
   },
   {
@@ -57,7 +57,7 @@ export const PROJECTS = [
     desc: "",
     tags: ["React", "Tailwind", "API"],
     img: ramdanCounter,
-    live: "https://",
+    live: "https://ramdan-calender-counter.vercel.app/",
     github: "https://github.com/imama-ansari14",
   },
   {
