@@ -67,7 +67,7 @@ export const PROJECTS = [
     desc: "Food-themed restaurant website with modern layout and full menu UI.",
     tags: ["HTML", "CSS", "Bootstrap"],
     img: bistroBliss,
-    live: "https://",
+    live: "https://bistro-bliss-presentation.netlify.app/",
     github: "https://github.com/imama-ansari14",
   },
   {
@@ -77,7 +77,7 @@ export const PROJECTS = [
     desc: "Interactive survey form with dynamic questions and responsive design.",
     tags: ["HTML", "CSS", "Bootstrap", "JS", "SupaBase"],
     img: SurveyForm,
-    live: "https://glowmode-calculator.netlify.app/",
+    live: "https://imama-ansari14.github.io/Dynamic-Survey-Form/",
     github: "https://github.com/imama-ansari14/CodeAlpha_Projects.git",
   },
   {
@@ -87,7 +87,7 @@ export const PROJECTS = [
     desc: "Blog Post platform with user authentication, post creation and dynamic content display.",
     tags: ["HTML", "CSS", "Bootstrap", "JS", "SupaBase"],
     img: Postagram,
-    live: "https://glowmode-calculator.netlify.app/",
+    live: "https://imama-ansari14.github.io/Blog_App-Hackathon-Module-2-/",
     github: "https://github.com/imama-ansari14/CodeAlpha_Projects.git",
   },
   {
