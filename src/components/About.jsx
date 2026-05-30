@@ -53,7 +53,7 @@ const About = () => {
     >
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
         {/* Background Section Title (Luxury aesthetic) */}
-        <div className="absolute -bottom-10 left-0 opacity-5 pointer-events-none select-none">
+        <div className="absolute -top-10 left-0 opacity-6 pointer-events-none select-none">
           <h1 className="text-[25vw] font-black text-lavender italic leading-none">
             ABOUT
           </h1>
