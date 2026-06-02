@@ -3,6 +3,7 @@ import Hero from "./components/Hero";
 import About from "./components/About";
 import Work from "./components/Work";
 import Tech from "./components/TechStack";
+import CertificatesSection from "./components/Certificates";
 import Footer from "./components/Footer";
 
 
@@ -14,6 +15,7 @@ export default function App() {
       <About />
       <Work />
       <Tech />
+      <CertificatesSection />
       <Footer />
     </div>
   );
