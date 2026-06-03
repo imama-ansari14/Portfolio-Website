@@ -4,6 +4,7 @@ import About from "./components/About";
 import Work from "./components/Work";
 import Tech from "./components/TechStack";
 import CertificatesSection from "./components/Certificates";
+import Contact from "./components/Contact";
 import Footer from "./components/Footer";
 
 
@@ -16,6 +17,7 @@ export default function App() {
       <Work />
       <Tech />
       <CertificatesSection />
+      <Contact />
       <Footer />
     </div>
   );
