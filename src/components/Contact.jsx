@@ -26,7 +26,11 @@ export default function ContactSection() {
   const fullText = "Let's build something.";
 
   // Form state
-  const [formData, setFormData] = useState({ name: "", email: "", message: "" });
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    message: "",
+  });
   const [status, setStatus] = useState("idle"); // idle | sending | success | error
   const [focusedField, setFocusedField] = useState(null);
 
@@ -42,7 +46,7 @@ export default function ContactSection() {
           // blink cursor a few times then stop
           let blinks = 0;
           const blink = setInterval(() => {
-            setCursorVisible(v => !v);
+            setCursorVisible((v) => !v);
             blinks++;
             if (blinks > 6) {
               clearInterval(blink);
@@ -170,7 +174,10 @@ export default function ContactSection() {
     try {
       const res = await fetch(`https://formspree.io/f/${FORMSPREE_ID}`, {
         method: "POST",
-        headers: { "Content-Type": "application/json", Accept: "application/json" },
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
         body: JSON.stringify(formData),
       });
 
@@ -181,7 +188,13 @@ export default function ContactSection() {
         gsap.fromTo(
           rightRef.current,
           { boxShadow: "0 0 0px #cf9cc8" },
-          { boxShadow: "0 0 60px #cf9cc820", duration: 0.8, ease: "power2.out", yoyo: true, repeat: 1 }
+          {
+            boxShadow: "0 0 60px #cf9cc820",
+            duration: 0.8,
+            ease: "power2.out",
+            yoyo: true,
+            repeat: 1,
+          }
         );
       } else {
         setStatus("error");
@@ -240,26 +253,23 @@ export default function ContactSection() {
 
       {/* ── Content ── */}
       <div className="relative z-10 w-full max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
-
         {/* ── LEFT ── */}
         <div ref={leftRef} style={{ opacity: 0 }}>
-          {/* Eyebrow */}
-          <p
-            className="text-[#cf9cc8] font-['DM_Sans'] text-xs tracking-[0.35em] uppercase mb-6"
-            style={{ fontFamily: "var(--font-dm)" }}
-          >
-            Contact
-          </p>
-
           {/* Typewriter headline */}
           <h2
             className="font-['Syne'] text-5xl md:text-6xl font-extrabold text-white leading-tight mb-8"
-            style={{ fontFamily: "var(--font-syne)", minHeight: "clamp(120px, 18vw, 168px)" }}
+            style={{
+              fontFamily: "var(--font-syne)",
+              minHeight: "clamp(120px, 18vw, 168px)",
+            }}
           >
             {typed}
             <span
               className="inline-block w-[3px] h-[0.85em] ml-1 align-middle bg-[#cf9cc8]"
-              style={{ opacity: cursorVisible ? 1 : 0, transition: "opacity 0.1s" }}
+              style={{
+                opacity: cursorVisible ? 1 : 0,
+                transition: "opacity 0.1s",
+              }}
             />
           </h2>
 
@@ -268,16 +278,26 @@ export default function ContactSection() {
             className="text-white/50 font-['DM_Sans'] text-base leading-relaxed mb-10 max-w-md"
             style={{ fontFamily: "var(--font-dm)" }}
           >
-            Whether it's a bold rebrand, a pixel-perfect interface, or a late-night idea — my inbox is always open.
+            Whether it's a bold rebrand, a pixel-perfect interface, or a
+            late-night idea — my inbox is always open.
           </p>
 
           {/* Info list */}
           <ul className="space-y-4">
             {[
-              { label: "Email", value: "hello@yourname.com", href: "mailto:hello@yourname.com" },
-              { label: "LinkedIn", value: "linkedin.com/in/yourname", href: "#" },
-              { label: "Behance", value: "behance.net/yourname", href: "#" },
+              {
+                label: "Email",
+                value: "ansariimama@yahoo.com",
+                href: "mailto:ansariimama@yahoo.com",
+              },
+              {
+                label: "LinkedIn",
+                value: "linkedin.com/in/yourname",
+                href: "https://www.linkedin.com/in/imama-ansari/",
+              },
+              { label: "Instagram", value: "instagram.com/webbyimama", href: "#" },
               { label: "Status", value: "Available for freelance ✦" },
+
             ].map(({ label, value, href }) => (
               <li key={label} ref={addInfoRef} style={{ opacity: 0 }}>
                 <div className="flex items-start gap-3">
@@ -325,14 +345,18 @@ export default function ContactSection() {
           <div
             className="absolute inset-0 rounded-2xl pointer-events-none"
             style={{
-              background: "linear-gradient(135deg, #512b4230 0%, #7c4c7515 50%, #512b4220 100%)",
+              background:
+                "linear-gradient(135deg, #512b4230 0%, #7c4c7515 50%, #512b4220 100%)",
               border: "1px solid #512b4260",
             }}
           />
           {/* Inner glass */}
           <div
             className="absolute inset-0 rounded-2xl pointer-events-none"
-            style={{ background: "rgba(255,255,255,0.015)", backdropFilter: "blur(8px)" }}
+            style={{
+              background: "rgba(255,255,255,0.015)",
+              backdropFilter: "blur(8px)",
+            }}
           />
 
           <div className="relative z-10">
@@ -341,10 +365,19 @@ export default function ContactSection() {
               <div className="flex flex-col items-center justify-center py-16 text-center space-y-4">
                 <div
                   className="w-16 h-16 rounded-full flex items-center justify-center mb-4"
-                  style={{ background: "#512b4260", border: "1px solid #cf9cc840" }}
+                  style={{
+                    background: "#512b4260",
+                    border: "1px solid #cf9cc840",
+                  }}
                 >
                   <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
-                    <path d="M5 14l7 7L23 7" stroke="#cf9cc8" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
+                    <path
+                      d="M5 14l7 7L23 7"
+                      stroke="#cf9cc8"
+                      strokeWidth="2.5"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    />
                   </svg>
                 </div>
                 <h3
@@ -363,7 +396,6 @@ export default function ContactSection() {
             ) : (
               <form onSubmit={handleSubmit} noValidate>
                 <div className="space-y-6">
-
                   {/* Name */}
                   <div ref={addLabelRef} style={{ opacity: 0 }}>
                     <label
@@ -371,7 +403,8 @@ export default function ContactSection() {
                       className="block font-['DM_Sans'] text-[10px] tracking-[0.25em] uppercase mb-2 transition-colors duration-200"
                       style={{
                         fontFamily: "var(--font-dm)",
-                        color: focusedField === "name" ? "#cf9cc8" : "#cf9cc890",
+                        color:
+                          focusedField === "name" ? "#cf9cc8" : "#cf9cc890",
                       }}
                     >
                       Name
@@ -390,7 +423,9 @@ export default function ContactSection() {
                       className="w-full bg-transparent pb-2 font-['DM_Sans'] text-sm text-white placeholder:text-white/20 focus:outline-none transition-colors duration-200"
                       style={{
                         fontFamily: "var(--font-dm)",
-                        borderBottom: `1px solid ${focusedField === "name" ? "#cf9cc8" : "#512b4280"}`,
+                        borderBottom: `1px solid ${
+                          focusedField === "name" ? "#cf9cc8" : "#512b4280"
+                        }`,
                       }}
                     />
                   </div>
@@ -402,7 +437,8 @@ export default function ContactSection() {
                       className="block font-['DM_Sans'] text-[10px] tracking-[0.25em] uppercase mb-2 transition-colors duration-200"
                       style={{
                         fontFamily: "var(--font-dm)",
-                        color: focusedField === "email" ? "#cf9cc8" : "#cf9cc890",
+                        color:
+                          focusedField === "email" ? "#cf9cc8" : "#cf9cc890",
                       }}
                     >
                       Email
@@ -421,7 +457,9 @@ export default function ContactSection() {
                       className="w-full bg-transparent pb-2 font-['DM_Sans'] text-sm text-white placeholder:text-white/20 focus:outline-none transition-colors duration-200"
                       style={{
                         fontFamily: "var(--font-dm)",
-                        borderBottom: `1px solid ${focusedField === "email" ? "#cf9cc8" : "#512b4280"}`,
+                        borderBottom: `1px solid ${
+                          focusedField === "email" ? "#cf9cc8" : "#512b4280"
+                        }`,
                       }}
                     />
                   </div>
@@ -433,7 +471,8 @@ export default function ContactSection() {
                       className="block font-['DM_Sans'] text-[10px] tracking-[0.25em] uppercase mb-2 transition-colors duration-200"
                       style={{
                         fontFamily: "var(--font-dm)",
-                        color: focusedField === "message" ? "#cf9cc8" : "#cf9cc890",
+                        color:
+                          focusedField === "message" ? "#cf9cc8" : "#cf9cc890",
                       }}
                     >
                       Message
@@ -451,7 +490,9 @@ export default function ContactSection() {
                       className="w-full bg-transparent pb-2 font-['DM_Sans'] text-sm text-white placeholder:text-white/20 focus:outline-none resize-none transition-colors duration-200"
                       style={{
                         fontFamily: "var(--font-dm)",
-                        borderBottom: `1px solid ${focusedField === "message" ? "#cf9cc8" : "#512b4280"}`,
+                        borderBottom: `1px solid ${
+                          focusedField === "message" ? "#cf9cc8" : "#512b4280"
+                        }`,
                       }}
                     />
                   </div>
@@ -462,7 +503,8 @@ export default function ContactSection() {
                       className="text-red-400/80 font-['DM_Sans'] text-xs"
                       style={{ fontFamily: "var(--font-dm)" }}
                     >
-                      Something went wrong. Please try again or email me directly.
+                      Something went wrong. Please try again or email me
+                      directly.
                     </p>
                   )}
 
@@ -479,38 +521,50 @@ export default function ContactSection() {
                         border: "1px solid #7c4c7550",
                       }}
                       onMouseEnter={(e) => {
-                        gsap.to(e.currentTarget, { background: "#7c4c75", duration: 0.3, ease: "power2.out" });
-                        gsap.to(e.currentTarget, { boxShadow: "0 0 32px #7c4c7550", duration: 0.3 });
+                        gsap.to(e.currentTarget, {
+                          background: "#7c4c75",
+                          duration: 0.3,
+                          ease: "power2.out",
+                        });
+                        gsap.to(e.currentTarget, {
+                          boxShadow: "0 0 32px #7c4c7550",
+                          duration: 0.3,
+                        });
                       }}
                       onMouseLeave={(e) => {
-                        gsap.to(e.currentTarget, { background: "#512b42", duration: 0.3, ease: "power2.out" });
-                        gsap.to(e.currentTarget, { boxShadow: "0 0 0px transparent", duration: 0.3 });
+                        gsap.to(e.currentTarget, {
+                          background: "#512b42",
+                          duration: 0.3,
+                          ease: "power2.out",
+                        });
+                        gsap.to(e.currentTarget, {
+                          boxShadow: "0 0 0px transparent",
+                          duration: 0.3,
+                        });
                       }}
                     >
                       <span className="flex items-center justify-center gap-3">
                         {status === "sending" ? (
                           <>
-                            <span
-                              className="w-4 h-4 rounded-full border-2 border-[#cf9cc8]/30 border-t-[#cf9cc8] animate-spin"
-                            />
+                            <span className="w-4 h-4 rounded-full border-2 border-[#cf9cc8]/30 border-t-[#cf9cc8] animate-spin" />
                             Sending…
                           </>
                         ) : (
                           <>
                             Send Message
-                            <span className="group-hover:translate-x-1.5 transition-transform duration-300 inline-block">→</span>
+                            <span className="group-hover:translate-x-1.5 transition-transform duration-300 inline-block">
+                              →
+                            </span>
                           </>
                         )}
                       </span>
                     </button>
                   </div>
-
                 </div>
               </form>
             )}
           </div>
         </div>
-
       </div>
     </section>
   );
