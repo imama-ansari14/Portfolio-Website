@@ -1,52 +1,33 @@
-import { useEffect, useRef, useState, useCallback } from "react";
+import { useEffect, useRef, useState, useCallback, useMemo } from "react";
 import gsap from "gsap";
 
-// Replace with your actual certificate imports
-import cert1 from "../assets/Certificates/Cisco-HTML.PNG";
+import cert1 from "../assets/Certificates/Cisco-HTML.png";
 import cert2 from "../assets/Certificates/Modern-AI.png";
-// import cert3 from "../assets/certificate-3.png";
+import cert3 from "../assets/Certificates/Hackathon.jpeg";
 
-const certificates = [
+const originalCertificates = [
   {
     image: cert1,
-    title: "Full Stack Web Development",
-    issuer: "Coursera",
-    date: "Mar 2024",
-    credentialId: "CERT-2024-FSW",
+    title: "HTML Essentials",
+    issuer: "Cisco Networking Academy",
+    date: "Oct 2025",
   },
   {
     image: cert2,
-    title: "UI/UX Design Principles",
-    issuer: "Google",
+    title: "Introduction to Modern AI",
+    issuer: "Cisco Networking Academy",
+    date: "March 2026",
+  },
+  {
+    image: cert3,
+    title: "FemHack-2025",
+    issuer: "Saylani Mass IT Training",
     date: "Jan 2024",
-    credentialId: "GGL-UX-2024",
-  },
-  // duplicate for demo — remove if you have more real certs
-  {
-    image: cert1,
-    title: "HTML & CSS Fundamentals",
-    issuer: "Cisco",
-    date: "Dec 2023",
-    credentialId: "CISCO-HTML-2023",
-  },
-  {
-    image: cert2,
-    title: "Modern AI Essentials",
-    issuer: "DeepLearning.AI",
-    date: "Feb 2024",
-    credentialId: "DLAI-MOD-AI-24",
-  },
-  {
-    image: cert1,
-    title: "Responsive Web Design",
-    issuer: "freeCodeCamp",
-    date: "Oct 2023",
-    credentialId: "FCC-RWD-2023",
   },
 ];
 
 const AUTOPLAY_DELAY = 3000;
-const CARD_GAP = 24; // px gap between cards
+const CARD_GAP = 24;
 
 export default function CertificatesSection() {
   const trackRef = useRef(null);
@@ -56,22 +37,31 @@ export default function CertificatesSection() {
   const autoplayRef = useRef(null);
   const animRef = useRef(null);
 
-  const [currentIndex, setCurrentIndex] = useState(0);
+  // We clone items to create an infinite loop effect
+  const certificates = useMemo(
+    () => [
+      ...originalCertificates,
+      ...originalCertificates,
+      ...originalCertificates,
+    ],
+    []
+  );
+
+  const totalOriginal = originalCertificates.length;
+  // Start the slider at the middle set of clones
+  const [currentIndex, setCurrentIndex] = useState(totalOriginal);
   const [isPaused, setIsPaused] = useState(false);
   const [cardWidth, setCardWidth] = useState(0);
-  const [containerWidth, setContainerWidth] = useState(0);
 
-  // Drag state
-  const dragState = useRef({ active: false, startX: 0, startOffset: 0, currentOffset: 0 });
+  const dragState = useRef({
+    active: false,
+    startX: 0,
+    startOffset: 0,
+  });
 
-  const total = certificates.length;
-
-  // ── Calculate card width based on container (show ~3 cards) ──
   const calcCardWidth = useCallback(() => {
     if (!trackRef.current?.parentElement) return;
     const cw = trackRef.current.parentElement.clientWidth;
-    setContainerWidth(cw);
-    // on mobile: 1 card, tablet: 2, desktop: 3
     const visibleCount = cw < 600 ? 1 : cw < 960 ? 2 : 3;
     setCardWidth((cw - CARD_GAP * (visibleCount - 1)) / visibleCount);
   }, []);
@@ -79,74 +69,97 @@ export default function CertificatesSection() {
   useEffect(() => {
     calcCardWidth();
     const ro = new ResizeObserver(calcCardWidth);
-    if (trackRef.current?.parentElement) ro.observe(trackRef.current.parentElement);
+    if (trackRef.current?.parentElement)
+      ro.observe(trackRef.current.parentElement);
     return () => ro.disconnect();
   }, [calcCardWidth]);
 
-  // ── Animate track to index ──
-  const slideTo = useCallback((index, instant = false) => {
-    if (!trackRef.current || !cardWidth) return;
-    const clamped = Math.max(0, Math.min(index, total - 1));
-    const offset = -(clamped * (cardWidth + CARD_GAP));
-    if (animRef.current) animRef.current.kill();
-    animRef.current = gsap.to(trackRef.current, {
-      x: offset,
-      duration: instant ? 0 : 0.55,
-      ease: "power3.out",
-    });
-    setCurrentIndex(clamped);
-  }, [cardWidth, total]);
+  // Handle the "Infinite" snap back logic
+  const slideTo = useCallback(
+    (index, instant = false) => {
+      if (!trackRef.current || !cardWidth) return;
 
-  // ── Auto-advance ──
+      const offset = -(index * (cardWidth + CARD_GAP));
+
+      if (animRef.current) animRef.current.kill();
+
+      animRef.current = gsap.to(trackRef.current, {
+        x: offset,
+        duration: instant ? 0 : 0.6,
+        ease: "power3.out",
+        onComplete: () => {
+          // If we reached the end set, snap to the middle set instantly
+          if (index >= totalOriginal * 2) {
+            slideTo(index - totalOriginal, true);
+          }
+          // If we dragged back too far, snap forward instantly
+          else if (index < totalOriginal) {
+            slideTo(index + totalOriginal, true);
+          }
+        },
+      });
+      setCurrentIndex(index);
+    },
+    [cardWidth, totalOriginal]
+  );
+
+  // Initialize position on first load
+  useEffect(() => {
+    if (cardWidth) slideTo(totalOriginal, true);
+  }, [cardWidth, slideTo, totalOriginal]);
+
   const startAutoplay = useCallback(() => {
     clearInterval(autoplayRef.current);
     autoplayRef.current = setInterval(() => {
-      setCurrentIndex(prev => {
-        const next = prev + 1 >= total ? 0 : prev + 1;
+      setCurrentIndex((prev) => {
+        const next = prev + 1;
         slideTo(next);
         return next;
       });
     }, AUTOPLAY_DELAY);
-  }, [slideTo, total]);
+  }, [slideTo]);
 
   useEffect(() => {
     if (!isPaused && cardWidth) startAutoplay();
     return () => clearInterval(autoplayRef.current);
   }, [isPaused, cardWidth, startAutoplay]);
 
-  // ── Progress bar ──
+  // Progress bar logic
   useEffect(() => {
     if (!progressRef.current || isPaused) return;
-    gsap.killTweensOf(progressRef.current);
-    gsap.fromTo(progressRef.current,
+    gsap.fromTo(
+      progressRef.current,
       { scaleX: 0 },
-      { scaleX: 1, duration: AUTOPLAY_DELAY / 1000, ease: "linear", transformOrigin: "left center" }
+      {
+        scaleX: 1,
+        duration: AUTOPLAY_DELAY / 1000,
+        ease: "none",
+        transformOrigin: "left",
+      }
     );
   }, [currentIndex, isPaused]);
 
-  // ── Entrance animations ──
+  // Entrance animations
   useEffect(() => {
-    gsap.fromTo(headingRef.current,
-      { y: -24, opacity: 0 },
-      { y: 0, opacity: 1, duration: 0.7, ease: "power3.out" }
+    gsap.fromTo(
+      headingRef.current,
+      { y: -30, opacity: 0 },
+      { y: 0, opacity: 1, duration: 0.8 }
     );
-    gsap.fromTo(trackRef.current,
-      { y: 48, opacity: 0 },
-      { y: 0, opacity: 1, duration: 0.8, delay: 0.2, ease: "power3.out" }
+    gsap.fromTo(
+      trackRef.current,
+      { opacity: 0 },
+      { opacity: 1, duration: 1, delay: 0.3 }
     );
   }, []);
 
-  // ── Pointer (drag) handlers ──
   const onPointerDown = (e) => {
-    if (e.button !== 0 && e.pointerType === "mouse") return;
     clearInterval(autoplayRef.current);
     if (animRef.current) animRef.current.kill();
-    const currentX = gsap.getProperty(trackRef.current, "x");
     dragState.current = {
       active: true,
       startX: e.clientX,
-      startOffset: currentX,
-      currentOffset: currentX,
+      startOffset: gsap.getProperty(trackRef.current, "x"),
     };
     trackRef.current.setPointerCapture(e.pointerId);
   };
@@ -154,75 +167,50 @@ export default function CertificatesSection() {
   const onPointerMove = (e) => {
     if (!dragState.current.active) return;
     const dx = e.clientX - dragState.current.startX;
-    const newX = dragState.current.startOffset + dx;
-    dragState.current.currentOffset = newX;
-    gsap.set(trackRef.current, { x: newX });
+    gsap.set(trackRef.current, { x: dragState.current.startOffset + dx });
   };
 
   const onPointerUp = (e) => {
     if (!dragState.current.active) return;
     dragState.current.active = false;
     const dx = e.clientX - dragState.current.startX;
-    const threshold = cardWidth * 0.25;
+    const threshold = cardWidth * 0.2;
 
     let next = currentIndex;
-    if (dx < -threshold) next = Math.min(currentIndex + 1, total - 1);
-    else if (dx > threshold) next = Math.max(currentIndex - 1, 0);
+    if (dx < -threshold) next = currentIndex + 1;
+    else if (dx > threshold) next = currentIndex - 1;
 
     slideTo(next);
     if (!isPaused) startAutoplay();
-  };
-
-  const goTo = (i) => {
-    slideTo(i);
-    if (!isPaused) {
-      clearInterval(autoplayRef.current);
-      startAutoplay();
-    }
   };
 
   return (
     <section
       ref={sectionRef}
       id="certificates"
-      className="relative py-20 px-6 md:px-12 overflow-hidden"
+      className="relative py-20 px-6 md:px-12 overflow-hidden bg-[#0f0a0d]"
     >
-      {/* Ambient glows */}
-      <div className="pointer-events-none absolute top-1/3 -left-32 w-[420px] h-[420px] rounded-full bg-[#7c4c75]/15 blur-[100px]" />
-      <div className="pointer-events-none absolute bottom-0 right-0 w-[320px] h-[320px] rounded-full bg-[#512b42]/25 blur-[90px]" />
+      <div className="pointer-events-none absolute top-1/3 -left-32 w-[420px] h-[420px] rounded-full bg-[#7c4c75]/10 blur-[120px]" />
 
       <div className="relative max-w-6xl mx-auto">
-
-        {/* Heading */}
-        <div ref={headingRef} className="mb-12 text-center" style={{ opacity: 0 }}>
-          <p className="text-[#cf9cc8] font-['DM_Sans'] text-xs tracking-[0.35em] uppercase mb-3">
-            Credentials
+        <div ref={headingRef} className="mb-12 text-center">
+          <p className="text-[#cf9cc8] font-mono text-xs tracking-[0.4em] uppercase mb-3">
+            Portfolio
           </p>
-          <h2
-            className="font-['Syne'] text-4xl md:text-5xl font-extrabold text-white"
-            style={{ fontFamily: "var(--font-syne)" }}
-          >
-            Certificates & Achievements
+          <h2 className="text-4xl md:text-5xl font-bold text-white font-['Syne']">
+            Certificates on Loop
           </h2>
         </div>
 
-        {/* Slider viewport — overflow hidden */}
         <div
-          className="overflow-hidden"
+          className="overflow-hidden cursor-grab active:cursor-grabbing"
           onMouseEnter={() => setIsPaused(true)}
-          onMouseLeave={() => { setIsPaused(false); startAutoplay(); }}
+          onMouseLeave={() => setIsPaused(false)}
         >
-          {/* Track */}
           <div
             ref={trackRef}
             className="flex"
-            style={{
-              gap: `${CARD_GAP}px`,
-              cursor: dragState.current.active ? "grabbing" : "grab",
-              userSelect: "none",
-              willChange: "transform",
-              opacity: 0,
-            }}
+            style={{ gap: `${CARD_GAP}px`, willChange: "transform" }}
             onPointerDown={onPointerDown}
             onPointerMove={onPointerMove}
             onPointerUp={onPointerUp}
@@ -231,62 +219,24 @@ export default function CertificatesSection() {
             {certificates.map((cert, i) => (
               <div
                 key={i}
-                className="flex-shrink-0 rounded-2xl overflow-hidden relative group"
-                style={{
-                  width: cardWidth || "calc(33.333% - 16px)",
-                  border: "1px solid rgba(207,156,200,0.15)",
-                  background: "rgba(124,76,117,0.06)",
-                  transition: "border-color 0.3s, box-shadow 0.3s",
-                }}
-                onMouseEnter={(e) => {
-                  e.currentTarget.style.borderColor = "rgba(207,156,200,0.4)";
-                  e.currentTarget.style.boxShadow = "0 0 40px rgba(124,76,117,0.2)";
-                }}
-                onMouseLeave={(e) => {
-                  e.currentTarget.style.borderColor = "rgba(207,156,200,0.15)";
-                  e.currentTarget.style.boxShadow = "none";
-                }}
+                className="flex-shrink-0 rounded-2xl overflow-hidden group border border-[#cf9cc8]/10 bg-[#512b42]/10 transition-all hover:border-[#cf9cc8]/40"
+                style={{ width: cardWidth }}
               >
-                {/* Certificate image */}
                 <div className="aspect-[16/10] overflow-hidden">
                   <img
                     src={cert.image}
                     alt={cert.title}
-                    draggable={false}
-                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-                    style={{ pointerEvents: "none" }}
+                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 pointer-events-none"
                   />
                 </div>
-
-                {/* Info bar below image */}
-                <div
-                  className="p-4 md:p-5"
-                  style={{ background: "rgba(15,10,13,0.7)", backdropFilter: "blur(10px)" }}
-                >
-                  {/* Badge */}
-                  <span
-                    className="inline-block font-['DM_Sans'] text-[9px] tracking-[2px] uppercase px-3 py-1 rounded-full border mb-3"
-                    style={{
-                      color: "var(--lavender)",
-                      borderColor: "rgba(207,156,200,0.25)",
-                      background: "rgba(81,43,66,0.55)",
-                      fontFamily: "var(--font-dm)",
-                    }}
-                  >
-                    {cert.issuer} · {cert.date}
+                <div className="p-5 bg-black/40 backdrop-blur-md">
+                  <span className="text-[10px] text-[#cf9cc8] uppercase tracking-widest border border-[#cf9cc8]/20 px-2 py-1 rounded-md mb-2 inline-block">
+                    {cert.issuer}
                   </span>
-
-                  <h3
-                    className="font-['Syne'] text-white text-sm md:text-base font-bold leading-snug mb-1"
-                    style={{ fontFamily: "var(--font-syne)" }}
-                  >
+                  <h3 className="text-white font-bold text-lg leading-tight mb-1 font-['Syne']">
                     {cert.title}
                   </h3>
-
-                  <p
-                    className="font-['DM_Sans'] text-[10px] tracking-widest"
-                    style={{ color: "rgba(124,76,117,0.8)", fontFamily: "var(--font-dm)" }}
-                  >
+                  <p className="text-[#7c4c75] text-[11px] font-mono">
                     {cert.credentialId}
                   </p>
                 </div>
@@ -296,75 +246,28 @@ export default function CertificatesSection() {
         </div>
 
         {/* Progress bar */}
-        <div
-          className="h-[2px] w-full mt-6 rounded-full overflow-hidden"
-          style={{ background: "rgba(81,43,66,0.35)" }}
-        >
+        <div className="h-[2px] w-full mt-10 bg-[#512b42]/30 rounded-full overflow-hidden">
           <div
             ref={progressRef}
-            className="h-full w-full"
-            style={{
-              background: "linear-gradient(90deg, var(--orchid), var(--lavender))",
-              transform: "scaleX(0)",
-              transformOrigin: "left center",
-            }}
+            className="h-full bg-gradient-to-r from-[#cf9cc8] to-[#7c4c75]"
           />
         </div>
 
-        {/* Dots + arrows */}
-        <div className="flex items-center justify-center gap-6 mt-6">
-          {/* Prev */}
-          <button
-            onClick={() => goTo(Math.max(currentIndex - 1, 0))}
-            aria-label="Previous"
-            className="w-9 h-9 rounded-full flex items-center justify-center border transition-all duration-200"
-            style={{
-              borderColor: "rgba(207,156,200,0.25)",
-              background: "rgba(15,10,13,0.5)",
-              color: "var(--lavender)",
-              cursor: "pointer",
-            }}
-            onMouseEnter={(e) => e.currentTarget.style.background = "var(--deep-plum)"}
-            onMouseLeave={(e) => e.currentTarget.style.background = "rgba(15,10,13,0.5)"}
-          >
-            ←
-          </button>
-
-          {/* Dots */}
-          <div className="flex items-center gap-2.5">
-            {certificates.map((_, i) => (
-              <button
-                key={i}
-                onClick={() => goTo(i)}
-                aria-label={`Go to ${i + 1}`}
-                className="h-1.5 rounded-full transition-all duration-300"
-                style={{
-                  width: i === currentIndex ? "28px" : "8px",
-                  background: i === currentIndex ? "var(--lavender)" : "rgba(124,76,117,0.4)",
-                  cursor: "pointer",
-                }}
-              />
-            ))}
-          </div>
-
-          {/* Next */}
-          <button
-            onClick={() => goTo(Math.min(currentIndex + 1, total - 1))}
-            aria-label="Next"
-            className="w-9 h-9 rounded-full flex items-center justify-center border transition-all duration-200"
-            style={{
-              borderColor: "rgba(207,156,200,0.25)",
-              background: "rgba(15,10,13,0.5)",
-              color: "var(--lavender)",
-              cursor: "pointer",
-            }}
-            onMouseEnter={(e) => e.currentTarget.style.background = "var(--deep-plum)"}
-            onMouseLeave={(e) => e.currentTarget.style.background = "rgba(15,10,13,0.5)"}
-          >
-            →
-          </button>
+        {/* Dots (Linked only to original 3) */}
+        <div className="flex justify-center gap-3 mt-8">
+          {originalCertificates.map((_, i) => (
+            <button
+              key={i}
+              onClick={() => slideTo(i + totalOriginal)}
+              className="h-1 rounded-full transition-all duration-300"
+              style={{
+                width: currentIndex % totalOriginal === i ? "32px" : "8px",
+                background:
+                  currentIndex % totalOriginal === i ? "#cf9cc8" : "#512b42",
+              }}
+            />
+          ))}
         </div>
-
       </div>
     </section>
   );
