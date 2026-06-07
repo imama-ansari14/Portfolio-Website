@@ -37,7 +37,6 @@ export default function CertificatesSection() {
   const autoplayRef = useRef(null);
   const animRef = useRef(null);
 
-  // We clone items to create an infinite loop effect
   const certificates = useMemo(
     () => [
       ...originalCertificates,
@@ -188,17 +187,14 @@ export default function CertificatesSection() {
     <section
       ref={sectionRef}
       id="certificates"
-      className="relative py-20 px-6 md:px-12 overflow-hidden bg-[#0f0a0d]"
+      className="relative py-10 px-6 md:px-12 overflow-hidden bg-[#0f0a0d]"
     >
       <div className="pointer-events-none absolute top-1/3 -left-32 w-[420px] h-[420px] rounded-full bg-[#7c4c75]/10 blur-[120px]" />
 
       <div className="relative max-w-6xl mx-auto">
-        <div ref={headingRef} className="mb-12 text-center">
-          <p className="text-[#cf9cc8] font-mono text-xs tracking-[0.4em] uppercase mb-3">
-            Portfolio
-          </p>
+        <div ref={headingRef} className="mb-10 text-center">
           <h2 className="text-4xl md:text-5xl font-bold text-white font-['Syne']">
-            Certificates on Loop
+            Certificates And Achievements
           </h2>
         </div>
 
@@ -245,15 +241,7 @@ export default function CertificatesSection() {
           </div>
         </div>
 
-        {/* Progress bar */}
-        <div className="h-[2px] w-full mt-10 bg-[#512b42]/30 rounded-full overflow-hidden">
-          <div
-            ref={progressRef}
-            className="h-full bg-gradient-to-r from-[#cf9cc8] to-[#7c4c75]"
-          />
-        </div>
-
-        {/* Dots (Linked only to original 3) */}
+        {/* Dots */}
         <div className="flex justify-center gap-3 mt-8">
           {originalCertificates.map((_, i) => (
             <button
