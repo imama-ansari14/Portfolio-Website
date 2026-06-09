@@ -203,21 +203,25 @@ const Hero = () => {
 
         {/* CTAs */}
         <div className="hero-cta-wrap flex flex-col sm:flex-row gap-4 items-center justify-center">
-          <button
+          <a
+            href="projects"
+            onClick={(e) => handleScroll(e, "projects")}
             onMouseEnter={handlePrimaryHover}
             onMouseLeave={handlePrimaryLeave}
-            className="w-full sm:w-auto bg-gradient-to-br from-[#512b42] to-[#7c4c75] text-white px-8 py-4 rounded-lg text-[11px] tracking-[0.22em] font-bold uppercase font-['Syne'] cursor-pointer transition-transform"
+            className="w-full sm:w-auto text-center bg-gradient-to-br from-[#512b42] to-[#7c4c75] text-white px-8 py-4 rounded-lg text-[11px] tracking-[0.22em] font-bold uppercase font-['Syne'] cursor-pointer transition-transform inline-block decoration-none no-underline"
           >
             VIEW PROJECTS
-          </button>
+          </a>
 
-          <button
+          <a
+            href="#contact"
+            onClick={(e) => handleScroll(e, "contact")}
             onMouseEnter={handlePrimaryHover}
             onMouseLeave={handlePrimaryLeave}
-            className="w-full sm:w-auto bg-transparent text-[#cf9cc8] border border-[#7c4c7580] px-8 py-4 rounded-lg text-[11px] tracking-[0.22em] font-bold uppercase font-['Syne'] cursor-pointer transition-transform"
+            className="w-full sm:w-auto text-center bg-transparent text-[#cf9cc8] border border-[#7c4c7580] px-8 py-4 rounded-lg text-[11px] tracking-[0.22em] font-bold uppercase font-['Syne'] cursor-pointer transition-transform inline-block decoration-none no-underline"
           >
             CONTACT ME
-          </button>
+          </a>
         </div>
       </div>
 

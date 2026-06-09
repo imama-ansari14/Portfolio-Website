@@ -6,7 +6,6 @@ import Logo from "../assets/logo.png";
 
 const navItems = ["About", "Projects", "Stack", "Certificates", "Contact"];
 
-// ✅ Smooth scroll helper
 const scrollToSection = (e, id) => {
   e.preventDefault();
   const el = document.getElementById(id);
