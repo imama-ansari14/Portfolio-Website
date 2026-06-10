@@ -3,7 +3,6 @@ import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import { Menu, X } from "lucide-react";
 import Logo from "../assets/logo.png";
-
 const navItems = ["About", "Projects", "Stack", "Certificates", "Contact"];
 
 const scrollToSection = (e, id) => {
@@ -69,7 +68,9 @@ const Navbar = () => {
           />
 
           {/* Logo */}
-          <img src={Logo} alt="logo" className="w-30 h-auto" />
+          <a href="#home">
+            <img src={Logo} alt="logo" className="w-30 h-auto" />
+          </a>
 
           {/* Desktop links */}
           <div
@@ -154,7 +155,9 @@ const Navbar = () => {
       >
         {/* Sidebar header */}
         <div className="flex justify-between items-center mb-8">
-          <img src={Logo} alt="logo" className="w-20 h-auto" />
+          <a href="#home">
+            <img src={Logo} alt="logo" className="w-20 h-auto" />
+          </a>
           <button
             onClick={closeSidebar}
             className="w-10 h-10 rounded-full flex items-center justify-center"
