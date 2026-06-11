@@ -204,7 +204,7 @@ const Hero = () => {
         {/* CTAs */}
         <div className="hero-cta-wrap flex flex-col sm:flex-row gap-4 items-center justify-center">
           <a
-            href="projects"
+            href="#projects"
             onClick={(e) => handleScroll(e, "projects")}
             onMouseEnter={handlePrimaryHover}
             onMouseLeave={handlePrimaryLeave}

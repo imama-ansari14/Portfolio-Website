@@ -2,7 +2,7 @@ import { Github, Linkedin, Instagram, Mail } from "lucide-react";
 import logo from "../assets/logo.png";
 
 const Footer = () => {
-  const navLinks = ["Home", "About", "Projects","Certificates", "Contact"];
+  const navLinks = ["Home", "About", "Projects", "Certificates", "Contact"];
 
   return (
     <footer
