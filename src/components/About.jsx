@@ -49,11 +49,11 @@ const About = () => {
     <section
       ref={containerRef}
       id="about"
-      className="relative w-full bg-black py-24 md:py-40 px-[8vw] overflow-hidden"
+      className="relative w-full bg-black py-24 md:py-20 px-[8vw] overflow-hidden"
     >
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
         {/* Background Section Title (Luxury aesthetic) */}
-        <div className="absolute -top-10 left-0 opacity-6 pointer-events-none select-none">
+        <div className="absolute -bottom-10 left-0 opacity-6 pointer-events-none select-none">
           <h1 className="text-[25vw] font-black text-lavender italic leading-none">
             ABOUT
           </h1>
@@ -97,7 +97,7 @@ const About = () => {
           </div>
 
           {/* PHYSICS ACTION CARDS: CV & GITHUB */}
-          <div className="flex flex-wrap gap-6 pt-10">
+          <div className="flex flex-wrap gap-6 pt-5">
             {/* CV Download Card */}
             <a
               href="/path-to-your-cv.pdf"
