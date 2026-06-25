@@ -12,20 +12,27 @@ const Work = () => {
   const trackRef = useRef();
   const progressBarRef = useRef();
 
+  // Scroll-driven horizontal reveal: as the user scrolls the page down,
+  // the section pins and the card track translates from right to left,
+  // so every project scrolls past the viewport before the page continues.
+  // Runs on ALL screen sizes now — the earlier mobile breakage was caused
+  // by fixed-pixel card widths (380/480px), not by the pin/scroll itself.
+  // Cards are sized responsively (vw-based) below, so the scroll distance
+  // is measured from the real rendered track width at every breakpoint.
   useGSAP(
     () => {
       const track = trackRef.current;
       const section = sectionRef.current;
 
-      const scrollDistance = track.scrollWidth - window.innerWidth + 100;
+      const scrollDistance = () => track.scrollWidth - section.clientWidth + 40;
 
       const tween = gsap.to(track, {
-        x: -scrollDistance,
+        x: () => -scrollDistance(),
         ease: "none",
         scrollTrigger: {
           trigger: section,
           start: "top top",
-          end: () => `+=${scrollDistance}`,
+          end: () => `+=${scrollDistance()}`,
           scrub: 1,
           pin: true,
           anticipatePin: 1,
@@ -38,10 +45,7 @@ const Work = () => {
         },
       });
 
-      return () => {
-        tween.kill();
-        ScrollTrigger.getAll().forEach((t) => t.kill());
-      };
+      return () => tween.kill();
     },
     { scope: sectionRef }
   );
@@ -50,32 +54,34 @@ const Work = () => {
     <section
       ref={sectionRef}
       id="projects"
-      className="relative h-screen w-full bg-[#0f0a0d] overflow-hidden flex flex-col justify-between "
+      className="relative h-screen w-full bg-[#0f0a0d] overflow-hidden flex flex-col justify-between"
     >
-      {/* ── Header Section (Fixed Overlap) ── */}
-      <div className="px-6 md:px-16 flex justify-between items-start z-20">
+      {/* ── Header Section ── */}
+      <div className="px-6 sm:px-8 md:px-16 flex justify-between items-start z-20">
         <div>
-          <h2 className="font-syne text-6xl md:text-7xl font-extrabold text-[#e8dde5] leading-[0.85] tracking-tighter uppercase mt-5">
-            Our Latest <br />
-            <span className="text-[#cf9cc8]">Projects</span>
+          <h2 className="font-syne text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold text-[#e8dde5] leading-[1] lg:leading-[0.85] tracking-tighter uppercase mt-5">
+            My Latest <br />
+            <span className="text-[#cf9cc8]">Work</span>
           </h2>
         </div>
       </div>
 
-      {/* ── Scrollable Track (Fixed Card Sizes) ── */}
-      <div className="relative flex-1 flex items-center mt-5">
+      {/* ── Scroll-driven Track ──
+          Sized in vw/breakpoint units (not fixed pixels) so cards always fit
+          the viewport at every screen size, from small phones to desktop. */}
+      <div className="relative flex-1 flex items-center mt-6 sm:mt-8 lg:mt-5 min-h-0">
         <div
           ref={trackRef}
-          className="flex gap-4 md:gap-10 px-5 md:px-15 will-change-transform h-[450px]"
+          className="flex gap-4 sm:gap-5 md:gap-6 lg:gap-10 px-6 sm:px-8 md:px-16 lg:px-15 will-change-transform h-[62vh] max-h-[400px] sm:max-h-[430px] md:max-h-[450px]"
         >
           {PROJECTS.map((p, i) => (
             <div
               key={`${p.id}-${i}`}
-              className="relative flex-shrink-0 w-[380px] md:w-[480px] h-full bg-[#140b10] rounded-[32px] border border-[#cf9cc810] overflow-hidden group hover:border-[#cf9cc840] transition-all duration-500"
+              className="relative flex-shrink-0 w-[72vw] max-w-[300px] sm:w-[340px] sm:max-w-none md:w-[400px] lg:w-[480px] h-full bg-[#140b10] rounded-[22px] sm:rounded-[28px] lg:rounded-[32px] border border-[#cf9cc810] overflow-hidden group hover:border-[#cf9cc840] transition-all duration-500"
             >
               {/* Image Area */}
-              <div className="relative h-[65%] overflow-hidden">
-                <div className="absolute top-2 right-3 z-10 font-dm text-[9px] tracking-widest text-white bg-[#7c4c75] px-2 py-1.5 rounded-full uppercase font-bold">
+              <div className="relative h-[60%] sm:h-[63%] md:h-[65%] overflow-hidden">
+                <div className="absolute top-2 right-3 z-10 font-dm text-[7px] sm:text-[8px] md:text-[9px] tracking-widest text-white bg-[#7c4c75] px-2 py-1 sm:py-1.5 rounded-full uppercase font-bold">
                   {p.category}
                 </div>
 
@@ -87,19 +93,24 @@ const Work = () => {
               </div>
 
               {/* Text Area */}
-              <div className="p-8 h-[35%] flex flex-col justify-between bg-[#140b10]">
-                <div>
-                  <h3 className="font-syne text-3xl font-bold text-[#e8dde5] tracking-tight">
+              <div className="p-4 sm:p-5 md:p-8 h-[40%] sm:h-[37%] md:h-[35%] flex flex-col justify-between bg-[#140b10]">
+                <div className="min-w-0">
+                  <h3 className="font-syne text-base sm:text-xl md:text-2xl lg:text-3xl font-bold text-[#e8dde5] tracking-tight truncate">
                     {p.title}
                   </h3>
-                  <p className="text-[11px] text-white/30 uppercase tracking-[0.2em] font-dm mt-1">
+                  <p className="text-[9px] sm:text-[10px] md:text-[11px] text-white/30 uppercase tracking-[0.12em] sm:tracking-[0.2em] font-dm mt-1 truncate">
                     {p.tags[0]} — {p.tags[1]}
                   </p>
                 </div>
 
-                <div className="flex justify-end mt-3">
-                  <div className="w-12 h-12 rounded-full bg-[#512b42] flex items-center justify-center text-[#cf9cc8] group-hover:bg-[#cf9cc8] group-hover:text-[#512b42] group-hover:rotate-45 transition-all duration-500">
-                    <ArrowUpRight size={22} />
+                <div className="flex justify-end mt-2 sm:mt-3">
+                  <div className="w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 rounded-full bg-[#512b42] flex items-center justify-center text-[#cf9cc8] group-hover:bg-[#cf9cc8] group-hover:text-[#512b42] group-hover:rotate-45 transition-all duration-500 shrink-0">
+                    <ArrowUpRight size={16} className="sm:hidden" />
+                    <ArrowUpRight
+                      size={20}
+                      className="hidden sm:block md:hidden"
+                    />
+                    <ArrowUpRight size={22} className="hidden md:block" />
                   </div>
                 </div>
               </div>
@@ -108,8 +119,8 @@ const Work = () => {
         </div>
       </div>
 
-      {/* ── Progress Bar Footer ── */}
-      <div className="px-16 w-full flex flex-col gap-4 mt-8">
+      {/* ── Progress Bar Footer (all screens) ── */}
+      <div className="px-6 sm:px-8 md:px-16 w-full flex flex-col gap-4 mt-6 sm:mt-8 pb-4 sm:pb-6 lg:pb-0">
         <div className="w-full h-[1px] bg-white/10 relative">
           <div
             ref={progressBarRef}
