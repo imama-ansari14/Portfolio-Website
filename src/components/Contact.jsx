@@ -295,9 +295,11 @@ export default function ContactSection() {
                 value: "linkedin.com/in/yourname",
                 href: "https://www.linkedin.com/in/imama-ansari/",
               },
-              { label: "Instagram", value: "instagram.com/webbyimama", href: "#" },
-              { label: "Status", value: "Available for freelance ✦" },
-
+              {
+                label: "Instagram",
+                value: "instagram.com/webbyimama",
+                href: "#",
+              },
             ].map(({ label, value, href }) => (
               <li key={label} ref={addInfoRef} style={{ opacity: 0 }}>
                 <div className="flex items-start gap-3">
