@@ -97,7 +97,7 @@ const Work = () => {
                   </p>
                 </div>
 
-                <div className="flex justify-end mt-4">
+                <div className="flex justify-end mt-3">
                   <div className="w-12 h-12 rounded-full bg-[#512b42] flex items-center justify-center text-[#cf9cc8] group-hover:bg-[#cf9cc8] group-hover:text-[#512b42] group-hover:rotate-45 transition-all duration-500">
                     <ArrowUpRight size={22} />
                   </div>

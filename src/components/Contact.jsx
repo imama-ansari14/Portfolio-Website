@@ -279,7 +279,7 @@ export default function ContactSection() {
             style={{ fontFamily: "var(--font-dm)" }}
           >
             Whether it's a bold rebrand, a pixel-perfect interface, or a
-            late-night idea — my inbox is always open.
+            late-night idea my inbox is always open.
           </p>
 
           {/* Info list */}
@@ -298,7 +298,7 @@ export default function ContactSection() {
               {
                 label: "Instagram",
                 value: "instagram.com/webbyimama",
-                href: "#",
+                href: "https://www.instagram.com/webbyimama/",
               },
             ].map(({ label, value, href }) => (
               <li key={label} ref={addInfoRef} style={{ opacity: 0 }}>
