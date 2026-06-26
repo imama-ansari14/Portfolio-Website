@@ -12,13 +12,7 @@ const Work = () => {
   const trackRef = useRef();
   const progressBarRef = useRef();
 
-  // Scroll-driven horizontal reveal: as the user scrolls the page down,
-  // the section pins and the card track translates from right to left,
-  // so every project scrolls past the viewport before the page continues.
-  // Runs on ALL screen sizes now — the earlier mobile breakage was caused
-  // by fixed-pixel card widths (380/480px), not by the pin/scroll itself.
-  // Cards are sized responsively (vw-based) below, so the scroll distance
-  // is measured from the real rendered track width at every breakpoint.
+  // Scroll-driven horizontal reveal: as the user scrolls the page down
   useGSAP(
     () => {
       const track = trackRef.current;
@@ -119,7 +113,7 @@ const Work = () => {
         </div>
       </div>
 
-      {/* ── Progress Bar Footer (all screens) ── */}
+      {/* ── Progress Bar Footer ── */}
       <div className="px-6 sm:px-8 md:px-16 w-full flex flex-col gap-4 mt-6 sm:mt-8 pb-4 sm:pb-6 lg:pb-0">
         <div className="w-full h-[1px] bg-white/10 relative">
           <div
