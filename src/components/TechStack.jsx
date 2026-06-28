@@ -84,7 +84,7 @@ const TechStack = () => {
           }
         );
 
-        // Motion Path Logic 
+        // Motion Path Logic
         const isTablet = window.innerWidth < 1024;
 
         const tl = gsap.timeline({
@@ -127,7 +127,7 @@ const TechStack = () => {
       ref={sectionRef}
       className="relative w-full bg-black overflow-hidden md:min-h-screen py-20 md:py-0"
     >
-      {/* ── Small mobile only: auto-scrolling marquee, no pin, no motion path ── */}
+      {/* ── Small mobile only: auto-scrolling marquee ── */}
       <div className="md:hidden px-0">
         <h2
           className="text-center text-[15vw] font-black uppercase tracking-tighter mb-8 px-6"
