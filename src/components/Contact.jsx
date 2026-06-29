@@ -4,11 +4,6 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 gsap.registerPlugin(ScrollTrigger);
 
-// ─────────────────────────────────────────────
-// USAGE:
-//   3. Drop <ContactSection /> anywhere in your page
-// ─────────────────────────────────────────────
-
 const FORMSPREE_ID = "YOUR_FORMSPREE_ID"; // 🔁 Replace this
 
 export default function ContactSection() {
