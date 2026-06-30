@@ -197,8 +197,8 @@ const Hero = () => {
 
         {/* Subtext */}
         <p className="hero-sub text-[13px] md:text-[14px] text-white/40 font-sans tracking-wide leading-relaxed max-w-[90%] md:max-w-[460px] mb-10">
-          I craft unconventional digital experiences. No templates. No boring.
-          Just fast, wild, conversion-focused websites.
+          I build fast, responsive websites and design the visuals that make
+          brands stand out real code, real graphics, zero templates.
         </p>
 
         {/* CTAs */}
