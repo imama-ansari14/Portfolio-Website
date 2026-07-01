@@ -12,7 +12,7 @@ const About = () => {
   const physicsItems = useRef([]);
 
   const aboutText =
-    "I am a digital artisan specialized in building high-performance websites. I don't do boring websites or ordinary apps — I specialize in crafting the wildest, most unconventional digital experiences out there.";
+    "I'm a MERN stack developer and graphic designer. I build fast, responsive websites from scratch and design the visuals — logos, UI, social graphics — that go with them. No templates, no stock layouts.";
 
   useGSAP(
     () => {
