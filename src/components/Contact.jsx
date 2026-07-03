@@ -4,7 +4,7 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 gsap.registerPlugin(ScrollTrigger);
 
-const FORMSPREE_ID = "YOUR_FORMSPREE_ID"; // 🔁 Replace this
+const FORMSPREE_ID = "";
 
 export default function ContactSection() {
   const sectionRef = useRef(null);
