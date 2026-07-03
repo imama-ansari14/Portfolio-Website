@@ -6,7 +6,7 @@ import AimersAcademy from "../assets/Work/Aimers-Academy.png";
 import ramdanCounter from "../assets/Work/Ramadan-Counter.png";
 import calculator from "../assets/Work/calc-project.png";
 import SurveyForm from "../assets/Work/SurveyForm.png";
-import Postagram from "../assets/Work/Postagram.png";
+import Postagram from "../assets/Work/postagram.png";
 
 export const PROJECTS = [
   {
@@ -23,7 +23,7 @@ export const PROJECTS = [
   {
     id: "02",
     title: "Ice And Spice",
-    category: "Web Dvelopment",
+    category: "Web Development",
     desc: "Restaurant website with vibrant design, menu showcase and contact form.",
     tags: ["React", "Tailwind"],
     img: IceAndSpice,
