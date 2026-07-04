@@ -4,7 +4,7 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 gsap.registerPlugin(ScrollTrigger);
 
-const FORMSPREE_ID = "";
+const FORMSPREE_ID = "https://formspree.io/f/mvgrjpoe";
 
 export default function ContactSection() {
   const sectionRef = useRef(null);
