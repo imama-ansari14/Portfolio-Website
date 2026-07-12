@@ -64,7 +64,7 @@ const Hero = () => {
         .from(
           ".hero-h-line",
           { y: 80, opacity: 0, stagger: 0.12, duration: 1 },
-          "-=0.4"
+          "-=0.4",
         )
         .from(".hero-type-row", { y: 60, opacity: 0, duration: 0.9 }, "-=0.5")
         .from(".hero-sub", { y: 20, opacity: 0, duration: 0.7 }, "-=0.4")
@@ -78,7 +78,7 @@ const Hero = () => {
             duration: 2,
             ease: "power2.out",
           },
-          0
+          0,
         )
         .from(".hero-grid", { opacity: 0, duration: 2 }, 0);
 
@@ -119,7 +119,7 @@ const Hero = () => {
         ease: "steps(1)",
       });
     },
-    { scope: container }
+    { scope: container },
   );
 
   const handlePrimaryHover = (e) =>

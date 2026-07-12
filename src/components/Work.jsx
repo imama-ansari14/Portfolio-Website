@@ -41,7 +41,7 @@ const Work = () => {
 
       return () => tween.kill();
     },
-    { scope: sectionRef }
+    { scope: sectionRef },
   );
 
   return (
