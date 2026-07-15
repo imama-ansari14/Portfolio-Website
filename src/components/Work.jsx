@@ -98,14 +98,20 @@ const Work = () => {
                 </div>
 
                 <div className="flex justify-end mt-2 sm:mt-3">
-                  <div className="w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 rounded-full bg-[#512b42] flex items-center justify-center text-[#cf9cc8] group-hover:bg-[#cf9cc8] group-hover:text-[#512b42] group-hover:rotate-45 transition-all duration-500 shrink-0">
+                  <a
+                    href={p.live}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label={`Open ${p.title} live website`}
+                    className="w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 rounded-full bg-[#512b42] flex items-center justify-center text-[#cf9cc8] group-hover:bg-[#cf9cc8] group-hover:text-[#512b42] group-hover:rotate-45 transition-all duration-500 shrink-0"
+                  >
                     <ArrowUpRight size={16} className="sm:hidden" />
                     <ArrowUpRight
                       size={20}
                       className="hidden sm:block md:hidden"
                     />
                     <ArrowUpRight size={22} className="hidden md:block" />
-                  </div>
+                  </a>
                 </div>
               </div>
             </div>
