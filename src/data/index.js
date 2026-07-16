@@ -17,7 +17,7 @@ export const PROJECTS = [
     desc: "Online Quran education platform with multi-tier pricing, contact form, and WhatsApp support.",
     tags: ["React", "Tailwind", "Formspree", "GSAP"],
     img: QuranSabaq,
-    live: "https://quran-sabaq.vercel.app/",
+    live: "https://quransabaq.com/",
     github: "https://github.com/imama-ansari14",
   },
   {
@@ -75,7 +75,7 @@ export const PROJECTS = [
     title: "Dynamic Survey Form",
     category: "Functionality",
     desc: "Interactive survey form with dynamic questions and responsive design.",
-    tags: ["JS", "SupaBase", "HTML", "CSS", "Bootstrap",],
+    tags: ["JS", "SupaBase", "HTML", "CSS", "Bootstrap"],
     img: SurveyForm,
     live: "https://imama-ansari14.github.io/Dynamic-Survey-Form/",
     github: "https://github.com/imama-ansari14/CodeAlpha_Projects.git",
@@ -99,6 +99,5 @@ export const PROJECTS = [
     img: calculator,
     live: "https://glowmode-calculator.netlify.app/",
     github: "https://github.com/imama-ansari14/CodeAlpha_Projects.git",
-  }
-
+  },
 ];
