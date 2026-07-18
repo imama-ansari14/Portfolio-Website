@@ -11,7 +11,9 @@ const CustomCursor = () => {
 
   useEffect(() => {
     // Only on devices with a real mouse (skip phones/tablets)
-    const hasMouse = window.matchMedia("(hover: hover) and (pointer: fine)").matches;
+    const hasMouse = window.matchMedia(
+      "(hover: hover) and (pointer: fine)",
+    ).matches;
     if (!hasMouse) return;
 
     const dot = dotRef.current;
@@ -23,8 +25,14 @@ const CustomCursor = () => {
     // Dot follows instantly, ring follows with a smooth lag
     const dotX = gsap.quickTo(dot, "x", { duration: 0.08, ease: "power3.out" });
     const dotY = gsap.quickTo(dot, "y", { duration: 0.08, ease: "power3.out" });
-    const ringX = gsap.quickTo(ring, "x", { duration: 0.45, ease: "power3.out" });
-    const ringY = gsap.quickTo(ring, "y", { duration: 0.45, ease: "power3.out" });
+    const ringX = gsap.quickTo(ring, "x", {
+      duration: 0.45,
+      ease: "power3.out",
+    });
+    const ringY = gsap.quickTo(ring, "y", {
+      duration: 0.45,
+      ease: "power3.out",
+    });
 
     let visible = false;
 

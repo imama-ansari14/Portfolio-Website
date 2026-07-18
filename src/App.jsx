@@ -6,6 +6,7 @@ import Tech from "./components/TechStack";
 import CertificatesSection from "./components/Certificates";
 import Contact from "./components/Contact";
 import Footer from "./components/Footer";
+import CustomCursor from "./components/CustomCursor";
 
 export default function App() {
   return (
