@@ -11,6 +11,7 @@ import CustomCursor from "./components/CustomCursor";
 export default function App() {
   return (
     <div className="bg-midnight text-white font-display">
+      <CustomCursor />
       <Navbar />
       <Hero />
       <About />
