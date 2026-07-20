@@ -88,3 +88,19 @@ h6 {
     animation: none;
   }
 }
+/* ── Custom cursor: hide the default arrow only on devices with a real mouse ── */
+/* @media (hover: hover) and (pointer: fine) {
+  html,
+  body,
+  a,
+  button,
+  input,
+  textarea,
+  select,
+  label,
+  [role="button"],
+  .cursor-pointer,
+  .cursor-grab {
+    cursor: none !important;
+  }
+} */

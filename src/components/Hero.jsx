@@ -127,6 +127,12 @@ const Hero = () => {
   const handlePrimaryLeave = (e) =>
     gsap.to(e.currentTarget, { scale: 1, duration: 0.25 });
 
+  const handleScroll = (e, id) => {
+    e.preventDefault();
+    const el = document.getElementById(id);
+    if (el) el.scrollIntoView({ behavior: "smooth" });
+  };
+
   return (
     <section
       ref={container}
