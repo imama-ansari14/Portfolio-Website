@@ -7,6 +7,7 @@ import ramdanCounter from "../assets/Work/Ramadan-Counter.png";
 import calculator from "../assets/Work/calc-project.png";
 import SurveyForm from "../assets/Work/SurveyForm.png";
 import Postagram from "../assets/Work/postagram.png";
+import GlobalTradingHouse from "../assets/Work/Global-Trading.png";
 
 export const PROJECTS = [
   {
@@ -26,8 +27,8 @@ export const PROJECTS = [
     category: "Web Development",
     desc: "Modern wholesale inventory platform for connecting international buyers with bulk US retail inventory.",
     tags: ["Next JS", "Tailwind", "Formspree", "GSAP"],
-    img: QuranSabaq,
-    live: "https://quransabaq.com/",
+    img: GlobalTradingHouse,
+    live: "#",
     github: "https://github.com/imama-ansari14",
   },
   {
