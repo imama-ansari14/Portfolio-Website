@@ -33,6 +33,16 @@ export const PROJECTS = [
   },
   {
     id: "03",
+    title: "Global ",
+    category: "Web Development",
+    desc: "Modern wholesale inventory platform for connecting international buyers with bulk US retail inventory.",
+    tags: ["Next JS", "Tailwind", "Formspree", "GSAP"],
+    img: GlobalTradingHouse,
+    live: "#",
+    github: "https://github.com/imama-ansari14",
+  },
+  {
+    id: "03",
     title: "Ice And Spice",
     category: "Web Development",
     desc: "Restaurant website with vibrant design, menu showcase and contact form.",
