@@ -33,10 +33,10 @@ export const PROJECTS = [
   },
   {
     id: "03",
-    title: "Global ",
+    title: "Nikkahly Marriage Bearue ",
     category: "Web Development",
     desc: "Modern wholesale inventory platform for connecting international buyers with bulk US retail inventory.",
-    tags: ["Next JS", "Tailwind", "Formspree", "GSAP"],
+    tags: ["Next JS", "Tailwind"],
     img: GlobalTradingHouse,
     live: "#",
     github: "https://github.com/imama-ansari14",
