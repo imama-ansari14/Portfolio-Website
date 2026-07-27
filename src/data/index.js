@@ -35,10 +35,10 @@ export const PROJECTS = [
     id: "03",
     title: "Nikkahly Marriage Bearue ",
     category: "Web Development",
-    desc: "Modern wholesale inventory platform for connecting international buyers with bulk US retail inventory.",
+    desc: "Nikkahly marriage bearue Private client management system",
     tags: ["React JS", "MongoDb", "Tailwind"],
     img: GlobalTradingHouse,
-    live: "#",
+    live: "https://nikkahly-marrige-bearue.vercel.app/",
     github: "https://github.com/imama-ansari14",
   },
   {
