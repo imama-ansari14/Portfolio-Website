@@ -33,6 +33,16 @@ export const PROJECTS = [
   },
   {
     id: "03",
+    title: "Global Trading House",
+    category: "Web Development",
+    desc: "Modern wholesale inventory platform for connecting international buyers with bulk US retail inventory.",
+    tags: ["Next JS", "Tailwind", "Formspree", "GSAP"],
+    img: GlobalTradingHouse,
+    live: "#",
+    github: "https://github.com/imama-ansari14",
+  },
+  {
+    id: "04",
     title: "Nikkahly Marriage Bearue ",
     category: "Web Development",
     desc: "Nikkahly marriage bearue Private client management system",
@@ -42,7 +52,7 @@ export const PROJECTS = [
     github: "https://github.com/imama-ansari14",
   },
   {
-    id: "03",
+    id: "05",
     title: "Ice And Spice",
     category: "Web Development",
     desc: "Restaurant website with vibrant design, menu showcase and contact form.",
