@@ -8,6 +8,7 @@ import calculator from "../assets/Work/calc-project.png";
 import SurveyForm from "../assets/Work/SurveyForm.png";
 import Postagram from "../assets/Work/postagram.png";
 import GlobalTradingHouse from "../assets/Work/Global-Trading.png";
+import Antra from "../assets/Work/Antra.png";
 
 export const PROJECTS = [
   {
@@ -33,11 +34,11 @@ export const PROJECTS = [
   },
   {
     id: "03",
-    title: "Global Trading House",
+    title: "Antra",
     category: "Web Development",
     desc: "Modern wholesale inventory platform for connecting international buyers with bulk US retail inventory.",
     tags: ["Next JS", "Tailwind", "Formspree", "GSAP"],
-    img: GlobalTradingHouse,
+    img: Antra,
     live: "#",
     github: "https://github.com/imama-ansari14",
   },
