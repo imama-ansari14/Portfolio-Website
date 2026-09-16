@@ -36,7 +36,7 @@ export const PROJECTS = [
     id: "03",
     title: "Antra",
     category: "Web Development",
-    desc: "Modern wholesale inventory platform for connecting international buyers with bulk US retail inventory.",
+    desc: "Antra is a modern web application that display interior design with a user-friendly interface and smooth animations.",
     tags: ["Next JS", "Tailwind", "Formspree", "GSAP"],
     img: Antra,
     live: "#",
