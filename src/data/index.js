@@ -37,7 +37,7 @@ export const PROJECTS = [
     title: "Antra",
     category: "Web Development",
     desc: "Antra is a modern web application that display interior design with a user-friendly interface and smooth animations.",
-    tags: ["Next JS", "Tailwind", "Formspree", "GSAP"],
+    tags: ["React JS", "Tailwind", "GSAP"],
     img: Antra,
     live: "https://real-estate-design-rho.vercel.app/",
     github: "https://github.com/imama-ansari14",
